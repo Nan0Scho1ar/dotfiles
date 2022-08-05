@@ -1,0 +1,198 @@
+alias vc='cd /media/veracrypt1'
+
+#Show
+alias \
+    showalias='echo ${BASH_ALIASES[`compgen -a | fzf`]}' \
+    showall='type `compgen -A function -abck | fzf`' \
+    showfunc='type `compgen -A function | fzf`'
+
+#Editors
+alias \
+    em='emacsclient -c -a "emacs" 1>/dev/null 2>&1 & disown' \
+    emq='emacsclient -c -a "emacs" & disown && exit' \
+    emt='emacsclient -nw' \
+    org='emacsclient -c "$HOME/nextcloud/org" & disown' \
+    orgq='emacsclient -c "$HOME/nextcloud/org" & disown && exit' \
+    todo='emacs --name "todos" -f "n0s1-agenda-day-view" & disown' \
+    emacsd='emacs --daemon & disown && exit' \
+    rider='bash ~/Rider/bin/rider.sh'
+
+#Find files
+alias \
+    lf='fzf | xargs -o less' \
+    batf='fzf | xargs -o bat' \
+    nvf='fzf | xargs -o n0s1vim' \
+    lvf='fzf | xargs -o nvim' \
+    vf='fzf | xargs -o vim' \
+    cdf='fzf | xargs -o cd'
+
+#Fuzzy find in files
+alias \
+    lfif='fzfif $1 | xargs less ' \
+    nvfif='fzfif $1 | xargs nvim ' \
+    vfif='fzfif $1 | xargs vim '
+
+#Neovim
+alias \
+    nv='n0s1vim' \
+    snv='sudo n0s1vim' \
+    nvw='n0s1vim $NREPOS/vimwiki/index.md' \
+    nvwp='nvim -u "$XDG_CONFIG_HOME/n0s1vim/init.vim" $NREPOS/vimwiki/system/programs/index.md' \
+
+#Lunarvim
+alias \
+    lv='nvim -u "$XDG_CONFIG_HOME/nvim/init.lua"' \
+    slv='sudo nvim -u "$XDG_CONFIG_HOME/nvim/init.lua"' \
+    lvim='nvim -u "$XDG_CONFIG_HOME/nvim/init.lua"' \
+#Vim
+
+alias \
+    vv='vim' \
+    sv='sudo vim' \
+    vw="vim $NREPOS/vimwiki/index.md" \
+    vwp="vim $NREPOS/vimwiki/system/programs/index.md"
+
+#System
+alias \
+    QQ='exit' \
+    ZZ='clear && zsh' \
+    BB='clear && bash' \
+    qq='tmux detach || exit' \
+    TT='toomuxh sys' \
+    tt='toomuxh local' \
+    tcl='toomuxh cluster' \
+    ttl='tmux list-sessions' \
+    cls='clear; n0s1 -g' \
+    tl='tree | less' \
+    ls='ls --color=auto' \
+    la='ls -a' \
+    ll='ls -alhF' \
+    lll='exa -abghHliS' \
+    cp="cp -i" \
+    mv="mv -i" \
+    df='df -h' \
+    free='free -m' \
+    grep='grep --color=auto' \
+    zz='cd ~' \
+    kys='shutdown 0' \
+    sr0='sudo reboot 0' \
+    kx="sudo killall Xorg" \
+    gn='systemctl suspend' \
+    ..='cd ..' \
+    sudo='sudo ' \
+    sysinit='./dotfiles/tmux/sys.sh' \
+    addr='ip addr | sed -n "s/^[0-9]: \(.*:\).*/\1/p;s/.* \([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\/[0-9]*\).*/\1/p" | sed -z "s/:\s*\n\([0-9]*\.\)/: \1/g"' \
+    whatismyip='echo $(curl -s whatismyip.akamai.com)'
+
+#History
+alias \
+    hf='eval $(history | fzf | sed "s/^ *[0-9]* *// ")' \
+    hl='history | less'
+
+#Include hidden
+alias \
+    fdh='fd --hidden' \
+    rgh='rg --hidden' \
+    fdha='fd -uu' \
+    rgha='rg -uu'
+
+alias pD='pd fzf'
+
+pd() {
+    if [ -z "$1" ]; then
+        pushd;
+    else
+        case "$1" in
+            ls) dirs -l -v ;;
+            bm) pushd $(bm get "$2" dirs) ;;
+            rm) pushd $(dirs -l -v | fzf | sed "s/ \([0-9]*\).*/\+\1/") && popd ;;
+            fzf) pushd $(dirs -l -v | fzf | sed "s/ \([0-9]*\).*/\+\1/") ;;
+            *) pushd "$1" ;;
+        esac
+    fi
+}
+
+
+#Helpful
+alias \
+    agi='sudo apt-get install' \
+    am='alsamixer' \
+    bra='broot -h' \
+    cap='xdotool getactivewindow windowminimize && sleep 0.5 && flameshot gui;' \
+    disp='export DISPLAY=:0' \
+    py='/usr/bin/python3' \
+    prevcmd='history | tail -n 2 | sed "s/\s*[0-9]*\s*//;1q"'
+
+
+
+#        BROWSER         #
+alias ff='firefox $1 > /dev/null 2>&1 &'
+alias ft=_ft
+_ft() {
+	while [ $# -gt 0 ]
+ 	do
+		firefox -new-tab $1 > /dev/null 2>&1 &
+		shift
+	done;
+}
+alias fs=_fsearch; _fsearch() { firefox --search $1; }
+alias fq=_fq; _fq() { firefox $1 > /dev/null 2>&1 & exit; }
+alias qf='pkill firefox'
+alias qfq='pkill firefox; exit'
+
+
+##ah        alias help (Displays this message)
+# alias ah='cat ~/.aliases | grep ^\#\# | grep -v "alias ah" | sed "s/##//"'
+
+
+#Find filtered files
+fff() {
+    fd -uu $1 | perl -pe "s/(.*?$1.*?\/|$).*/\1/i;s/\/$//" | uniq
+}
+
+
+fzfif() {
+    rg -n "$1" --hidden \
+        | fzf --delimiter=: --preview "fzf-bat-preview {1} {2}" \
+        | cut -f 1,2 -d":" \
+        | xargs echo `pwd`/$(</dev/stdin);
+}
+
+cht() { curl "cht.sh/$1"; }
+
+
+
+export FZF_COMPLETION_TRIGGER='**'
+
+# Options to fzf command
+export FZF_COMPLETION_OPTS='+c -x'
+
+# Use fd (https://github.com/sharkdp/fd) instead of the default find
+# command for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+    fd --hidden --follow --exclude ".git" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+    fd --type d --hidden --follow --exclude ".git" . "$1"
+}
+
+# (EXPERIMENTAL) Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+    local command=$1
+        shift
+
+    case "$command" in
+        cd)           fzf "$@" --preview 'tree -C {} | head -200' ;;
+        export|unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
+        ssh)          fzf "$@" --preview 'dig {}' ;;
+        *)            fzf "$@" ;;
+        esac
+}
+
+
