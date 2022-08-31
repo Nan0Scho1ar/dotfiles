@@ -1194,7 +1194,7 @@ do not already have one."
 (use-package! org-jira
   :custom
   (org-jira-working-dir pii/org-jira-working-dir)
-  (jiralib-url jiralib-url)
+  (jiralib-url pii/jiralib-url)
   (jiralib-update-issue-fields-exclude-list '(components)))
 #+end_src
 *** Org auto tangle
