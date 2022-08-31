@@ -87,7 +87,21 @@ alias \
     addr='ip addr | sed -n "s/^[0-9]: \(.*:\).*/\1/p;s/.* \([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\/[0-9]*\).*/\1/p" | sed -z "s/:\s*\n\([0-9]*\.\)/: \1/g"' \
     whatismyip='echo $(curl -s whatismyip.akamai.com)'
 
-#History
+# Call git with nan0scho1ar keyfile and config
+ngit() {
+    case $1 in
+        --configure)
+            git config --local user.name "nan0scho1ar";
+            git config --local user.email "scorch267@gmail.com";
+        ;;
+        *)
+            GIT_SSH_COMMAND='ssh -i $HOME/.ssh/nan0scho1ar' git $@
+        ;;
+    esac
+}
+
+
+# History
 alias \
     hf='eval $(history | fzf | sed "s/^ *[0-9]* *// ")' \
     hl='history | less'
