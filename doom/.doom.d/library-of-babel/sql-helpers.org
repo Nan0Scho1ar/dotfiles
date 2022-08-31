@@ -1,0 +1,7 @@
+#+title: Sql Helpers
+
+#+NAME: to-sql-results
+#+begin_src emacs-lisp :var results="" :results value
+(tablify-sql-results results)
+"Done!"
+#+end_src
