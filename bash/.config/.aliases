@@ -52,6 +52,9 @@ alias \
     vw="vim $NREPOS/vimwiki/index.md" \
     vwp="vim $NREPOS/vimwiki/system/programs/index.md"
 
+#Bat
+alias batl='bat -l logs'
+
 #System
 alias \
     QQ='exit' \
