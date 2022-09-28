@@ -883,6 +883,11 @@ To make VLF available without delaying startup, we'll just load it in quiet mome
 **** Super Agenda Layouts
 Regular agenda does not include habits
 Day agenda does include habits
+***** Both
+#+begin_src emacs-lisp :tangle config.el
+(use-package! org-super-agenda)
+#+end_src
+***** Home
 #+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
 (setq n0s1-org-super-agenda-week-config
        '((:log t)  ; Automatically named "Log"
@@ -913,7 +918,38 @@ Day agenda does include habits
          (:todo ("SOMEDAY" "MAYBE" "TO-READ")) :order 100)
         (:name "Waiting..." :todo "WAITING" :order 98)))
 #+end_src
+***** Work
+#+begin_src emacs-lisp :tangle (if work-config "config.el" "no")
+(setq n0s1-org-super-agenda-week-config
+       '((:log t)  ; Automatically named "Log"
+         (:discard (:tag ("habit" "optional")))
+         (:name "Schedule" :time-grid t :order 0)
+         (:name "Today" :scheduled today :order 1)
+         (:name "Due today" :deadline today :order 2)
+         (:name "Overdue" :deadline past :order 3)
+         (:name "Due soon" :deadline future :order 5)
+         (:name "Scheduled earlier" :scheduled past :order 4)
+         (:name "Unimportant" :auto-tags
+          (:todo ("SOMEDAY" "MAYBE" "TO-READ")) :order 100)
+         (:name "Waiting..." :todo "WAITING" :order 98)))
+
+(setq n0s1-org-super-agenda-day-config
+      '((:log t)  ; Automatically named "Log"
+        (:name "Due soon" :deadline future :order 7)
+        (:name "Habits" :tag "habit" :order 5)
+        (:name "Optional" :tag "optional" :order 8)
+        (:name "Schedule" :time-grid t :order 0)
+        (:name "Today" :scheduled today :order 3)
+        (:name "Due today" :deadline today :order 4)
+        (:name "Overdue" :deadline past :order 2)
+        (:name "Scheduled earlier" :scheduled past :order 1)
+        (:name "Remember" :todo "REMEMBER" :order 90)
+        (:name "Unimportant" :auto-tags
+         (:todo ("SOMEDAY" "MAYBE" "TO-READ")) :order 100)
+        (:name "Waiting..." :todo "WAITING" :order 98)))
+#+end_src
 **** Super Agenda Views
+***** Home
 #+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
 (setq org-super-agenda-groups n0s1-org-super-agenda-week-config)
 
@@ -930,8 +966,26 @@ Day agenda does include habits
         ("tc" "todo n0s1.core view"  ((tags-todo "n0s1_core")))
         ("tb" "todo ByteSource view" ((tags-todo "BYTESOURCE")))))
 #+end_src
+***** Work
+#+begin_src emacs-lisp :tangle (if work-config "config.el" "no")
+(setq org-super-agenda-groups n0s1-org-super-agenda-week-config)
+
+(setq org-agenda-custom-commands
+      '(("n" "n0s1 day view"
+         ((agenda "" ((org-agenda-span 'day)
+                      (org-agenda-start-day nil)
+                      (org-super-agenda-groups
+                       n0s1-org-super-agenda-day-config)))))
+        ("T"  "all todos view"
+         ((alltodo "" ((org-super-agenda-groups '((:auto-category t)))))))
+        ("tD" "todo DB view"  ((tags-todo "DB")))
+        ("tM" "todo MW view"  ((tags-todo "MW")))
+        ("tR" "todo RMS view" ((tags-todo "RMS")))
+        ("tS" "todo SAM view" ((tags-todo "SAM")))))
+#+end_src
 **** Bindings
-#+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
+***** Both
+#+begin_src emacs-lisp :tangle config.el
 (defun n0s1-agenda-day-view (&optional arg)
   (interactive "P")
   (org-agenda arg "n"))
@@ -944,7 +998,8 @@ Day agenda does include habits
 (map! :desc "Org Agenda Day View" :leader "T" 'n0s1-agenda-all-todos-view)
 #+end_src
 **** Hook
-#+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
+***** Both
+#+begin_src emacs-lisp :tangle config.el
 (add-hook 'after-init-hook 'org-super-agenda-mode)
 #+end_src
 *** Org Roam
