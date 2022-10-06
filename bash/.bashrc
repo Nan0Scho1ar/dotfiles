@@ -24,32 +24,33 @@ is_in_git_repo() {
 branch_with_status() {
     is_in_git_repo || return
     stat="$(git status)"
+    branch=$(git rev-parse --abbrev-ref HEAD)
     echo $stat | grep -q "nothing to commit, working tree clean" && \
         echo $stat | grep -q "Your branch is up to date" && \
-        echo "(${green}$(git rev-parse --abbrev-ref HEAD)${reset})" && return
+        echo "(${green}${branch}${reset})" && return
     echo $stat | grep -Eq "both added|both modified" && \
-        echo "(${red}$(git rev-parse --abbrev-ref HEAD)${reset}) ${red}$(git diff --name-only --diff-filter=U | wc -l) CONFLICTS${reset}" && return
+        echo "(${red}${branch}${reset}) ${red}$(git diff --name-only --diff-filter=U | wc -l) CONFLICTS${reset}" && return
     new="${green}$(echo $stat | grep -o 'new file:' | wc -l)${reset}"
     modified="${yellow}$(echo $stat | grep -o 'modified:' | wc -l)${reset}"
     deleted="${red}$(echo $stat | grep -o 'deleted:' | wc -l)${reset}"
     echo $stat | grep -q "Your branch is up to date" && \
-        echo "(${red}$(git rev-parse --abbrev-ref HEAD)${reset}) ${new} ${modified} ${deleted}" || \
-        echo "(${yellow}$(git rev-parse --abbrev-ref HEAD)${reset})"
+        echo "(${red}${branch}${reset}) ${new} ${modified} ${deleted}" || \
+        echo "(${yellow}${branch}${reset})"
 }
 
 
 ps1() {
     _pwd="${yellow}$(pwd | sed "s|$HOME|~|")${reset}"
-    _error=$([[ $? != 0 ]] && echo "[${red}✗${reset}]─")
+    _error=$([ $? -ne 0 ] && echo "[${red}✗${reset}]─")
     _userhostshell="${yellow}$(whoami)${reset}@${cyan}$(hostname)${yellow}(bash)${reset}${reset}"
     echo "${reset}┌─${_error}[${_userhostshell}]─[${_pwd}] $(branch_with_status)"
     echo "└──╼ "
 }
 export PS1='$(ps1)'
 
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #eval $(thefuck --alias)
 
@@ -57,7 +58,7 @@ export PS1='$(ps1)'
 if command -v termux-setup-storage > /dev/null 2>&1; then
     echo "todo fix keychain"
 elif [[ $- == *i* ]]; then
-    eval `keychain -q --eval id_rsa`
+    which keychain 1>/dev/null 2>&1 && eval `keychain -q --eval id_rsa`
 fi
 
 source $XDG_CONFIG_HOME/.aliases
@@ -205,4 +206,5 @@ shopt -s expand_aliases
 
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
+eval "$(direnv hook bash)"
 
