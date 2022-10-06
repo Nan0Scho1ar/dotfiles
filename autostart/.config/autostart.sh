@@ -33,5 +33,7 @@ echo -e "DONE\n\n" >> $AS_LOG_PATH
 echo "Ran startup script" >> $AS_LOG_PATH
 echo -e "\n\n\n" >> $AS_LOG_PATH
 
-
-
+case $HOSTNAME in
+    jupiter) startup_jupiter  ;;
+    *) echo "TODO" ;;
+esac
