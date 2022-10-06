@@ -56,13 +56,25 @@ case $HOSTNAME in
         bspc rule -a Screenkey manage=off
         ;;
     jupiter)
-        bspc monitor "DisplayPort-1" --rename "left"
-        bspc monitor "DisplayPort-2" --rename "mid"
+        bspc monitor "DisplayPort-2" --rename "left"
+        bspc monitor "DisplayPort-1" --rename "mid"
         bspc monitor "DisplayPort-0" --rename "right"
+        bspc monitor "HDMI-A-0"      --rename "top"
 
-        bspc monitor "left" -d I II III IV V VI VII VIII IX X
-        bspc monitor "mid" -d XI XII XIII XIV XV XVI XVII XVIII XIX XX
-        bspc monitor "right" -d XXI XXII XXIII XXIV XXV XXVI XXVII XXVIII XXIX XXX
+        bspc monitor "left"  -d    I    II    III    IV    V    VI    VII    VIII    IX   X
+        bspc monitor "mid"   -d   XI   XII   XIII   XIV   XV   XVI   XVII   XVIII   XIX  XX
+        bspc monitor "right" -d  XXI  XXII  XXIII  XXIV  XXV  XXVI  XXVII  XXVIII  XXIX XXX
+        bspc monitor "top"   -d XXXI XXXII XXXIII XXXIV XXXV XXXVI XXXVII XXXVIII XXXIX  XL
+
+        # Order monitors for sane keybinds
+        first=$(bspc query -M --names | sed -n 1p)
+        [ "$first" = "left" ] || bspc monitor "$first" -s "left"
+
+        second=$(bspc query -M --names | sed -n 2p)
+        [ "$second" = "mid" ] || bspc monitor "$second" -s "mid"
+
+        third=$(bspc query -M --names | sed -n 3p)
+        [ "$third" = "right" ] || bspc monitor "$third" -s "right"
 
         # bspc rule -a Gimp desktop='^5' state=floating follow=on
         # bspc rule -a Emacs desktop='^5' state=tiled
