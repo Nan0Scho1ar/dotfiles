@@ -31,7 +31,7 @@ fi
 export WM="bspwm"
 
 SCRIPT_PATHS="$($NCORE/out/mkpath $NSCR)"
-export PATH="$PATH:$SCRIPT_PATHS:$NREPOS/n0s1.core/out:$HOME/.cargo/bin:$HOME/.emacs.d/bin"
+export PATH="$PATH:$SCRIPT_PATHS:$NREPOS/n0s1.core/out:$HOME/.cargo/bin:$HOME/.emacs.d/bin:$HOME/.local/bin"
 
 READ_PROFILE=true
 [ "$READ_RCFILE" != "true" ] && [[ -f $HOME/.bashrc ]] && . $HOME/.bashrc
