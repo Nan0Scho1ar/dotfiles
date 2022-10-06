@@ -9,11 +9,14 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-if [ "$HOSTNAME" == "earth" ]; then
-    export DEFAULT_SESSION=bspwm
-else
-    DEFAULT_SESSION=startplasma-x11
-fi
+case "$HOSTNAME" in
+    earth|jupiter)
+        export DEFAULT_SESSION=bspwm
+        ;;
+    *)
+        export DEFAULT_SESSION=startplasma-x11
+        ;;
+esac
 
 # merge in defaults and keymaps
 
