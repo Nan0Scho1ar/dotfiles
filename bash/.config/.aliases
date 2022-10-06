@@ -53,7 +53,8 @@ alias \
     vwp="vim $NREPOS/vimwiki/system/programs/index.md"
 
 #Bat
-alias batl='bat -l logs'
+alias batl='bat -l log'
+haws() { aws $@ help | bat -l log; }
 
 #System
 alias \
@@ -143,7 +144,6 @@ alias \
 
 
 #        BROWSER         #
-alias ff='firefox $1 > /dev/null 2>&1 &'
 alias ft=_ft
 _ft() {
 	while [ $# -gt 0 ]
