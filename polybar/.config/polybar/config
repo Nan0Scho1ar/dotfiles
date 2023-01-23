@@ -265,6 +265,122 @@ modules-left = time battery blank mpdcontrols mpdname
 modules-center =
 modules-right = bspwm-large-4
 
+[bar/mainbar-aesthetic-5]
+monitor = ${env:MONITOR}
+width = 100%
+height = 40
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+bottom = true
+separator =
+
+background = #00000000
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+wm-restack = bspwm
+override-redirect = true
+
+; Enable support for inter-process messaging
+; See the Messaging wiki page for more details.
+enable-ipc = true
+
+border-size = 10
+;border-left-size = 25
+;border-right-size = 25
+;border-top-size = 0
+;border-bottom-size = 25
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+;https://github.com/jaagr/polybar/wiki/Fonts
+font-0 = "Noto Sans:size=10;0"
+font-1 = "FontAwesome:size=13;2"
+font-2 = "Noto Sans:size=10;0"
+font-3 = "Noto Sans Mono:size=10;0"
+
+;tray-detached = false
+;tray-offset-x = 0
+;tray-offset-y = 0
+;tray-padding = 2
+;tray-maxsize = 20
+;tray-scale = 1.0
+;tray-position = right
+;tray-background = ${colors.background}
+
+scroll-up = bspwm-wrap "prev"
+scroll-down = bspwm-wrap "next"
+modules-left = time battery blank mpdcontrols mpdname
+modules-center =
+modules-right = bspwm-large-5
+
+[bar/mainbar-aesthetic-6]
+monitor = ${env:MONITOR}
+width = 100%
+height = 40
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+bottom = true
+separator =
+
+background = #00000000
+foreground = ${colors.foreground}
+
+line-size = 2
+line-color = #f00
+
+wm-restack = bspwm
+override-redirect = true
+
+; Enable support for inter-process messaging
+; See the Messaging wiki page for more details.
+enable-ipc = true
+
+border-size = 10
+;border-left-size = 25
+;border-right-size = 25
+;border-top-size = 0
+;border-bottom-size = 25
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+;https://github.com/jaagr/polybar/wiki/Fonts
+font-0 = "Noto Sans:size=10;0"
+font-1 = "FontAwesome:size=13;2"
+font-2 = "Noto Sans:size=10;0"
+font-3 = "Noto Sans Mono:size=10;0"
+
+;tray-detached = false
+;tray-offset-x = 0
+;tray-offset-y = 0
+;tray-padding = 2
+;tray-maxsize = 20
+;tray-scale = 1.0
+;tray-position = right
+;tray-background = ${colors.background}
+
+scroll-up = bspwm-wrap "prev"
+scroll-down = bspwm-wrap "next"
+modules-left = time battery blank mpdcontrols mpdname
+modules-center =
+modules-right = bspwm-large-6
+
 [bar/mainbar-bspwm-1]
 monitor = ${env:MONITOR}
 ;monitor-fallback = HDMI1
@@ -509,6 +625,128 @@ modules-left = bspwm-4 bspwm-state xwindow
 modules-center =
 modules-right = memory2 cpu2 date battery_mainbar
 
+[bar/mainbar-bspwm-5]
+monitor = ${env:MONITOR}
+;monitor-fallback = HDMI1
+width = 100%
+height = 19
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+bottom = false
+separator = |
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+line-color = #f00
+
+wm-restack = bspwm
+override-redirect = true
+
+; Enable support for inter-process messaging
+; See the Messaging wiki page for more details.
+enable-ipc = true
+
+border-size = 0
+;border-left-size = 0
+;border-right-size = 25
+;border-top-size = 0
+;border-bottom-size = 25
+border-color = #00000000
+
+padding-left = 0
+padding-right = 1
+
+module-margin-left = 0
+module-margin-right = 0
+
+;https://github.com/jaagr/polybar/wiki/Fonts
+font-0 = "Noto Sans:size=10;0"
+font-1 = "FontAwesome:size=13;2"
+font-2 = "Noto Sans:size=10;0"
+font-3 = "Noto Sans Mono:size=10;0"
+
+;modules-right = pavolume memory2 cpu2 date battery_mainbar
+
+tray-detached = false
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 2
+tray-maxsize = 20
+tray-scale = 1.0
+tray-position = right
+tray-background = ${colors.background}
+
+scroll-up = bspwm-wrap "prev"
+scroll-down = bspwm-wrap "next"
+modules-left = bspwm-5 bspwm-state xwindow
+modules-center =
+modules-right = memory2 cpu2 date battery_mainbar
+
+[bar/mainbar-bspwm-6]
+monitor = ${env:MONITOR}
+;monitor-fallback = HDMI1
+width = 100%
+height = 19
+;offset-x = 1%
+;offset-y = 1%
+radius = 0.0
+fixed-center = true
+bottom = false
+separator = |
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 1
+line-color = #f00
+
+wm-restack = bspwm
+override-redirect = true
+
+; Enable support for inter-process messaging
+; See the Messaging wiki page for more details.
+enable-ipc = true
+
+border-size = 0
+;border-left-size = 0
+;border-right-size = 25
+;border-top-size = 0
+;border-bottom-size = 25
+border-color = #00000000
+
+padding-left = 0
+padding-right = 1
+
+module-margin-left = 0
+module-margin-right = 0
+
+;https://github.com/jaagr/polybar/wiki/Fonts
+font-0 = "Noto Sans:size=10;0"
+font-1 = "FontAwesome:size=13;2"
+font-2 = "Noto Sans:size=10;0"
+font-3 = "Noto Sans Mono:size=10;0"
+
+;modules-right = pavolume memory2 cpu2 date battery_mainbar
+
+tray-detached = false
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 2
+tray-maxsize = 20
+tray-scale = 1.0
+tray-position = right
+tray-background = ${colors.background}
+
+scroll-up = bspwm-wrap "prev"
+scroll-down = bspwm-wrap "next"
+modules-left = bspwm-6 bspwm-state xwindow
+modules-center =
+modules-right = memory2 cpu2 date battery_mainbar
+
 [module/bspwm-1]
 type = internal/bspwm
 
@@ -569,13 +807,69 @@ ws-icon-1 = II;2
 ws-icon-2 = III;3
 ws-icon-3 = IV;4
 ws-icon-4 = V;5
-ws-icon-5 = VI;6
-ws-icon-6 = VII;7
-ws-icon-7 = VIII;8
-ws-icon-8 = IX;9
-ws-icon-9 = X;10
 
 [module/bspwm-2]
+type = internal/bspwm
+
+enable-click = true
+enable-scroll = false
+reverse-scroll = false
+pin-workspaces = false
+
+format = <label-state> <label-mode>
+
+ws-icon-default = ""
+
+label-focused = %icon%
+label-focused-background = #007070
+label-focused-underline=
+label-focused-padding = 1
+label-focused-foreground = ${colors.foreground}
+
+label-occupied = %icon%
+label-occupied-padding = 1
+label-occupied-background = ${colors.background}
+
+label-urgent = %icon%
+label-urgent-padding = 1
+
+label-empty = %icon%
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 1
+label-empty-background = ${colors.background}
+label-monocle = ""
+label-monocle-foreground = ${colors.foreground}
+label-tiled = ""
+label-tiled-foreground = ${colors.foreground}
+label-fullscreen = ""
+label-fullscreen-foreground = ${colors.foreground}
+label-floating = ""
+label-floating-foreground = ${colors.foreground}
+label-pseudotiled = ""
+label-pseudotiled-foreground = ${colors.foreground}
+label-locked = ""
+label-locked-foreground = ${colors.foreground}
+label-sticky = ""
+label-sticky-foreground = ${colors.foreground}
+label-private =  ""
+label-private-foreground = ${colors.foreground}
+
+; Separator in between workspaces
+;label-separator = |
+;label-separator-padding = 0
+;label-separator-foreground = #ffb52a
+
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+
+ws-icon-0 = VI;1
+ws-icon-1 = VII;2
+ws-icon-2 = VIII;3
+ws-icon-3 = IX;4
+ws-icon-4 = X;5
+
+[module/bspwm-3]
 type = internal/bspwm
 
 enable-click = true
@@ -635,13 +929,69 @@ ws-icon-1 = XII;2
 ws-icon-2 = XIII;3
 ws-icon-3 = XIV;4
 ws-icon-4 = XV;5
-ws-icon-5 = XVI;6
-ws-icon-6 = XVII;7
-ws-icon-7 = XVIII;8
-ws-icon-8 = XIX;9
-ws-icon-9 = XX;10
 
-[module/bspwm-3]
+[module/bspwm-4]
+type = internal/bspwm
+
+enable-click = true
+enable-scroll = false
+reverse-scroll = false
+pin-workspaces = false
+
+format = <label-state> <label-mode>
+
+ws-icon-default = ""
+
+label-focused = %icon%
+label-focused-background = #007070
+label-focused-underline=
+label-focused-padding = 1
+label-focused-foreground = ${colors.foreground}
+
+label-occupied = %icon%
+label-occupied-padding = 1
+label-occupied-background = ${colors.background}
+
+label-urgent = %icon%
+label-urgent-padding = 1
+
+label-empty = %icon%
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 1
+label-empty-background = ${colors.background}
+label-monocle = ""
+label-monocle-foreground = ${colors.foreground}
+label-tiled = ""
+label-tiled-foreground = ${colors.foreground}
+label-fullscreen = ""
+label-fullscreen-foreground = ${colors.foreground}
+label-floating = ""
+label-floating-foreground = ${colors.foreground}
+label-pseudotiled = ""
+label-pseudotiled-foreground = ${colors.foreground}
+label-locked = ""
+label-locked-foreground = ${colors.foreground}
+label-sticky = ""
+label-sticky-foreground = ${colors.foreground}
+label-private =  ""
+label-private-foreground = ${colors.foreground}
+
+; Separator in between workspaces
+;label-separator = |
+;label-separator-padding = 0
+;label-separator-foreground = #ffb52a
+
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+
+ws-icon-0 = XVI;1
+ws-icon-1 = XVII;2
+ws-icon-2 = XVIII;3
+ws-icon-3 = XIX;4
+ws-icon-4 = XX;5
+
+[module/bspwm-5]
 type = internal/bspwm
 
 enable-click = true
@@ -701,13 +1051,8 @@ ws-icon-1 = XXII;2
 ws-icon-2 = XXIII;3
 ws-icon-3 = XXIV;4
 ws-icon-4 = XXV;5
-ws-icon-5 = XXVI;6
-ws-icon-6 = XXVII;7
-ws-icon-7 = XXVIII;8
-ws-icon-8 = XXIX;9
-ws-icon-9 = XXX;10
 
-[module/bspwm-4]
+[module/bspwm-6]
 type = internal/bspwm
 
 enable-click = true
@@ -762,16 +1107,11 @@ format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
 
-ws-icon-0 = XXXI;1
-ws-icon-1 = XXXII;2
-ws-icon-2 = XXXIII;3
-ws-icon-3 = XXXIV;4
-ws-icon-4 = XXXV;5
-ws-icon-5 = XXXVI;6
-ws-icon-6 = XXXVII;7
-ws-icon-7 = XXXVIII;8
-ws-icon-8 = XXXIX;9
-ws-icon-9 = XL;10
+ws-icon-0 = XXVI;1
+ws-icon-1 = XXVII;2
+ws-icon-2 = XXVIII;3
+ws-icon-3 = XXIX;4
+ws-icon-4 = XXX;5
 
 [module/bspwm-large-1]
 type = internal/bspwm
@@ -831,13 +1171,67 @@ ws-icon-1 = II;2
 ws-icon-2 = III;3
 ws-icon-3 = IV;4
 ws-icon-4 = V;5
-ws-icon-5 = VI;6
-ws-icon-6 = VII;7
-ws-icon-7 = VIII;8
-ws-icon-8 = IX;9
-ws-icon-9 = X;10
 
 [module/bspwm-large-2]
+type = internal/bspwm
+
+enable-click = true
+enable-scroll = false
+reverse-scroll = false
+pin-workspaces = false
+
+format = <label-state> <label-mode>
+
+ws-icon-default = ""
+
+label-focused = %icon%
+label-focused-background = #EBCB8B
+label-focused-underline=
+label-focused-padding = 5
+label-focused-foreground = ${colors.background}
+
+label-occupied = %icon%
+label-occupied-padding = 5
+label-occupied-background = ${colors.background}
+
+label-urgent = %icon%
+label-urgent-padding = 5
+
+label-empty = %icon%
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 5
+label-empty-background = ${colors.background}
+;label-monocle = "  "
+;label-monocle-foreground = ${colors.foreground}
+;label-tiled = "  "
+;label-tiled-foreground = ${colors.foreground}
+;label-fullscreen = "  "
+;label-fullscreen-foreground = ${colors.foreground}
+;label-floating = "  "
+;label-floating-foreground = ${colors.foreground}
+;label-pseudotiled = "  "
+;label-pseudotiled-foreground = ${colors.foreground}
+;label-locked = "  "
+;label-locked-foreground = ${colors.foreground}
+;label-sticky = "  "
+;label-sticky-foreground = ${colors.foreground}
+;label-private =  "     "
+;label-private-foreground = ${colors.foreground}
+
+; Separator in between workspaces
+;label-separator = |
+;label-separator-padding = 0
+;label-separator-foreground = #ffb52a
+
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+ws-icon-0 = VI;1
+ws-icon-1 = VII;2
+ws-icon-2 = VIII;3
+ws-icon-3 = IX;4
+ws-icon-4 = X;5
+
+[module/bspwm-large-3]
 type = internal/bspwm
 
 enable-click = true
@@ -895,13 +1289,67 @@ ws-icon-1 = XII;2
 ws-icon-2 = XIII;3
 ws-icon-3 = XIV;4
 ws-icon-4 = XV;5
-ws-icon-5 = XVI;6
-ws-icon-6 = XVII;7
-ws-icon-7 = XVIII;8
-ws-icon-8 = XIX;9
-ws-icon-9 = XX;10
 
-[module/bspwm-large-3]
+[module/bspwm-large-4]
+type = internal/bspwm
+
+enable-click = true
+enable-scroll = false
+reverse-scroll = false
+pin-workspaces = false
+
+format = <label-state> <label-mode>
+
+ws-icon-default = ""
+
+label-focused = %icon%
+label-focused-background = #EBCB8B
+label-focused-underline=
+label-focused-padding = 5
+label-focused-foreground = ${colors.background}
+
+label-occupied = %icon%
+label-occupied-padding = 5
+label-occupied-background = ${colors.background}
+
+label-urgent = %icon%
+label-urgent-padding = 5
+
+label-empty = %icon%
+label-empty-foreground = ${colors.foreground}
+label-empty-padding = 5
+label-empty-background = ${colors.background}
+;label-monocle = "  "
+;label-monocle-foreground = ${colors.foreground}
+;label-tiled = "  "
+;label-tiled-foreground = ${colors.foreground}
+;label-fullscreen = "  "
+;label-fullscreen-foreground = ${colors.foreground}
+;label-floating = "  "
+;label-floating-foreground = ${colors.foreground}
+;label-pseudotiled = "  "
+;label-pseudotiled-foreground = ${colors.foreground}
+;label-locked = "  "
+;label-locked-foreground = ${colors.foreground}
+;label-sticky = "  "
+;label-sticky-foreground = ${colors.foreground}
+;label-private =  "     "
+;label-private-foreground = ${colors.foreground}
+
+; Separator in between workspaces
+;label-separator = |
+;label-separator-padding = 0
+;label-separator-foreground = #ffb52a
+
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+ws-icon-0 = XVI;1
+ws-icon-1 = XVII;2
+ws-icon-2 = XVIII;3
+ws-icon-3 = XIX;4
+ws-icon-4 = XX;5
+
+[module/bspwm-large-5]
 type = internal/bspwm
 
 enable-click = true
@@ -959,13 +1407,8 @@ ws-icon-1 = XXII;2
 ws-icon-2 = XXIII;3
 ws-icon-3 = XXIV;4
 ws-icon-4 = XXV;5
-ws-icon-5 = XXVI;6
-ws-icon-6 = XXVII;7
-ws-icon-7 = XXVIII;8
-ws-icon-8 = XXIX;9
-ws-icon-9 = XXX;10
 
-[module/bspwm-large-4]
+[module/bspwm-large-6]
 type = internal/bspwm
 
 enable-click = true
@@ -1018,16 +1461,11 @@ label-empty-background = ${colors.background}
 
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
-ws-icon-0 = XXXI;1
-ws-icon-1 = XXXII;2
-ws-icon-2 = XXXIII;3
-ws-icon-3 = XXXIV;4
-ws-icon-4 = XXXV;5
-ws-icon-5 = XXXVI;6
-ws-icon-6 = XXXVII;7
-ws-icon-7 = XXXVIII;8
-ws-icon-8 = XXXIX;9
-ws-icon-9 = XL;10
+ws-icon-0 = XXVI;1
+ws-icon-1 = XXVII;2
+ws-icon-2 = XXVIII;3
+ws-icon-3 = XXIX;4
+ws-icon-4 = XXX;5
 
 [module/cpu2]
 ;https://github.com/jaagr/polybar/wiki/Module:-cpu

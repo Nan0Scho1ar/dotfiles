@@ -80,8 +80,14 @@ case $desktop in
             MONITOR=DisplayPort-0 BARNUM=3 polybar --reload mainbar-bspwm-3     -c ~/.config/polybar/config &
             MONITOR=DisplayPort-0 BARNUM=3 polybar --reload mainbar-aesthetic-3 -c ~/.config/polybar/config &
 
-            MONITOR=HDMI-A-0      BARNUM=4 polybar --reload mainbar-bspwm-4     -c ~/.config/polybar/config &
-            MONITOR=HDMI-A-0      BARNUM=4 polybar --reload mainbar-aesthetic-4 -c ~/.config/polybar/config &
+            MONITOR=DVI-D-1-1     BARNUM=4 polybar --reload mainbar-bspwm-4     -c ~/.config/polybar/config &
+            MONITOR=DVI-D-1-1     BARNUM=4 polybar --reload mainbar-aesthetic-4 -c ~/.config/polybar/config &
+
+            MONITOR=HDMI-A-0      BARNUM=5 polybar --reload mainbar-bspwm-5     -c ~/.config/polybar/config &
+            MONITOR=HDMI-A-0      BARNUM=5 polybar --reload mainbar-aesthetic-5 -c ~/.config/polybar/config &
+
+            MONITOR=HDMI-1-2      BARNUM=6 polybar --reload mainbar-bspwm-6     -c ~/.config/polybar/config &
+            MONITOR=HDMI-1-2      BARNUM=6 polybar --reload mainbar-aesthetic-6 -c ~/.config/polybar/config &
         else
             echo "loading bspwm bars..."
             if [ ! -z "$top" ]; then

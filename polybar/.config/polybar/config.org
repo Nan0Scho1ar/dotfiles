@@ -196,6 +196,24 @@ modules-center =
 modules-right = bspwm-large-4
 #+end_src
 
+#+name: mainbar-aesthetic-5
+#+begin_src toml :tangle config :noweb yes
+[bar/mainbar-aesthetic-5]
+<<mainbar-aesthetic-base>>
+modules-left = time battery blank mpdcontrols mpdname
+modules-center =
+modules-right = bspwm-large-5
+#+end_src
+
+#+name: mainbar-aesthetic-6
+#+begin_src toml :tangle config :noweb yes
+[bar/mainbar-aesthetic-6]
+<<mainbar-aesthetic-base>>
+modules-left = time battery blank mpdcontrols mpdname
+modules-center =
+modules-right = bspwm-large-6
+#+end_src
+
 #+name: mainbar-bspwm-1
 #+begin_src toml :tangle config :noweb yes
 [bar/mainbar-bspwm-1]
@@ -228,6 +246,24 @@ modules-right = memory2 cpu2 date battery_mainbar
 [bar/mainbar-bspwm-4]
 <<mainbar-bspwm-base>>
 modules-left = bspwm-4 bspwm-state xwindow
+modules-center =
+modules-right = memory2 cpu2 date battery_mainbar
+#+end_src
+
+#+name: mainbar-bspwm-5
+#+begin_src toml :tangle config :noweb yes
+[bar/mainbar-bspwm-5]
+<<mainbar-bspwm-base>>
+modules-left = bspwm-5 bspwm-state xwindow
+modules-center =
+modules-right = memory2 cpu2 date battery_mainbar
+#+end_src
+
+#+name: mainbar-bspwm-6
+#+begin_src toml :tangle config :noweb yes
+[bar/mainbar-bspwm-6]
+<<mainbar-bspwm-base>>
+modules-left = bspwm-6 bspwm-state xwindow
 modules-center =
 modules-right = memory2 cpu2 date battery_mainbar
 #+end_src
@@ -354,53 +390,51 @@ ws-icon-1 = II;2
 ws-icon-2 = III;3
 ws-icon-3 = IV;4
 ws-icon-4 = V;5
-ws-icon-5 = VI;6
-ws-icon-6 = VII;7
-ws-icon-7 = VIII;8
-ws-icon-8 = IX;9
-ws-icon-9 = X;10
 #+end_src
 
 #+name: ws-icons-2
+#+begin_src toml :tangle no
+ws-icon-0 = VI;1
+ws-icon-1 = VII;2
+ws-icon-2 = VIII;3
+ws-icon-3 = IX;4
+ws-icon-4 = X;5
+#+end_src
+
+#+name: ws-icons-3
 #+begin_src toml :tangle no
 ws-icon-0 = XI;1
 ws-icon-1 = XII;2
 ws-icon-2 = XIII;3
 ws-icon-3 = XIV;4
 ws-icon-4 = XV;5
-ws-icon-5 = XVI;6
-ws-icon-6 = XVII;7
-ws-icon-7 = XVIII;8
-ws-icon-8 = XIX;9
-ws-icon-9 = XX;10
 #+end_src
 
-#+name: ws-icons-3
+#+name: ws-icons-4
+#+begin_src toml :tangle no
+ws-icon-0 = XVI;1
+ws-icon-1 = XVII;2
+ws-icon-2 = XVIII;3
+ws-icon-3 = XIX;4
+ws-icon-4 = XX;5
+#+end_src
+
+#+name: ws-icons-5
 #+begin_src toml :tangle no
 ws-icon-0 = XXI;1
 ws-icon-1 = XXII;2
 ws-icon-2 = XXIII;3
 ws-icon-3 = XXIV;4
 ws-icon-4 = XXV;5
-ws-icon-5 = XXVI;6
-ws-icon-6 = XXVII;7
-ws-icon-7 = XXVIII;8
-ws-icon-8 = XXIX;9
-ws-icon-9 = XXX;10
 #+end_src
 
-#+name: ws-icons-4
+#+name: ws-icons-6
 #+begin_src toml :tangle no
-ws-icon-0 = XXXI;1
-ws-icon-1 = XXXII;2
-ws-icon-2 = XXXIII;3
-ws-icon-3 = XXXIV;4
-ws-icon-4 = XXXV;5
-ws-icon-5 = XXXVI;6
-ws-icon-6 = XXXVII;7
-ws-icon-7 = XXXVIII;8
-ws-icon-8 = XXXIX;9
-ws-icon-9 = XL;10
+ws-icon-0 = XXVI;1
+ws-icon-1 = XXVII;2
+ws-icon-2 = XXVIII;3
+ws-icon-3 = XXIX;4
+ws-icon-4 = XXX;5
 #+end_src
 
 #+name: module-bspwm-1
@@ -431,6 +465,20 @@ ws-icon-9 = XL;10
 <<ws-icons-4>>
 #+end_src
 
+#+name: module-bspwm-5
+#+begin_src toml :tangle config :noweb yes
+[module/bspwm-5]
+<<module-bspwm-base>>
+<<ws-icons-5>>
+#+end_src
+
+#+name: module-bspwm-6
+#+begin_src toml :tangle config :noweb yes
+[module/bspwm-6]
+<<module-bspwm-base>>
+<<ws-icons-6>>
+#+end_src
+
 #+name: module-bspwm-large-1
 #+begin_src toml :tangle config :noweb yes
 [module/bspwm-large-1]
@@ -457,6 +505,20 @@ ws-icon-9 = XL;10
 [module/bspwm-large-4]
 <<module-bspwm-large-base>>
 <<ws-icons-4>>
+#+end_src
+
+#+name: module-bspwm-large-5
+#+begin_src toml :tangle config :noweb yes
+[module/bspwm-large-5]
+<<module-bspwm-large-base>>
+<<ws-icons-5>>
+#+end_src
+
+#+name: module-bspwm-large-6
+#+begin_src toml :tangle config :noweb yes
+[module/bspwm-large-6]
+<<module-bspwm-large-base>>
+<<ws-icons-6>>
 #+end_src
 ** module/cpu2
 #+begin_src text :tangle config
