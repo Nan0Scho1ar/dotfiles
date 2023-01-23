@@ -40,10 +40,30 @@ branch_with_status() {
 
 
 ps1() {
-    _pwd="${yellow}$(pwd | sed "s|$HOME|~|")${reset}"
-    _error=$([ $? -ne 0 ] && echo "[${red}✗${reset}]─")
-    _userhostshell="${yellow}$(whoami)${reset}@${cyan}$(hostname)${yellow}(bash)${reset}${reset}"
-    echo "${reset}┌─${_error}[${_userhostshell}]─[${_pwd}] $(branch_with_status)"
+    if [ $? -ne 0 ]; then
+        _ps1_error="[${red}✗${reset}]─"
+    else
+        _ps1_error=''
+    fi
+    _ps1_pwd="[${yellow}$(pwd | sed "s|$HOME|~|")${reset}]"
+    _ps1_userhostshell="[${yellow}$(whoami)${reset}@${cyan}$(hostname)${yellow}(bash)${reset}${reset}]─"
+
+    # TODO Finish this
+    if [ -n "$ENV" ]; then
+        _ps1_ENV="[${white}ENV${reset}='${magenta}$ENV${reset}']"
+    else
+        _ps1_ENV=''
+    fi
+    if [ -n "$AWS_PROFILE" ]; then
+        _ps1_aws_profile="[${white}AWS_PROFILE${reset}='${magenta}$AWS_PROFILE${reset}']"
+    else
+        _ps1_aws_profile=''
+    fi
+    _ps1_env_line="${_ps1_aws_profile} ${_ps1_ENV}"
+
+
+    echo "${reset}┌─${_ps1_error}${_ps1_userhostshell}${_ps1_pwd} $(branch_with_status) $VIRTUAL_ENV_PROMPT"
+    # [ -n "$_ps1_env_line" ] && echo "$_ps1_env_line"
     echo "└──╼ "
 }
 export PS1='$(ps1)'
@@ -53,6 +73,8 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #eval $(thefuck --alias)
+
+[ -d "/usr/racket" ] && export PATH="$PATH:/usr/racket/bin"
 
 # Keychain
 if command -v termux-setup-storage > /dev/null 2>&1; then
