@@ -423,6 +423,7 @@
        (php +lsp +tree-sitter)               ; perl's insecure younger brother
        (python +lsp +pyright
                +pyenv +tree-sitter)            ; beautiful is better than ugly
+       (racket +lsp +tree-sitter)            ; a DSL for DSLs
        (rest)              ; Emacs as a REST client
        (sh +lsp +tree-sitter)                ; she sells {ba,z,fi}sh shells on the C xor
        (web)               ; the tubes
