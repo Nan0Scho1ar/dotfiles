@@ -82,6 +82,7 @@ alias \
     sr0='sudo reboot 0' \
     kx="sudo killall Xorg" \
     gn='systemctl suspend' \
+    brc='source ~/.bashrc' \
     ..='cd ..' \
     sudo='sudo ' \
     sysinit='./dotfiles/tmux/sys.sh' \
