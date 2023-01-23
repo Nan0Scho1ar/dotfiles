@@ -60,8 +60,11 @@ super + Escape
 #emacs
 
 # quit/restart bspwm
-super + alt + {q,r}
-	bspc {quit,wm -r}
+super + alt + r
+	bspc wm -r
+
+# super + alt + q
+# 	bspc quit
 
 # close and kill
 super + {_,shift + }q
@@ -108,7 +111,7 @@ super + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
 
 # focus the next/previous desktop in the current monitor
-super + bracket{left,right}
+super + paren{left,right}
 	bspc desktop -f {prev,next}.local
 
 # focus the last node/desktop
@@ -121,24 +124,25 @@ super + {o,i}
 	bspc node {older,newer} -f; \
 	bspc wm -h on
 
-# focus or send to the given desktop
-# super + {_,shift + }{1-9,0}
-# 	bspc {desktop -f,node -d} '^{1-9,10}'
+focus or send to the given desktop
+super + {_,shift + }{1-5}
+	bspc {desktop -f,node -d} 'focused:^{1-5}'
 
-super + {_,shift +} {1-4} ; {1-9,0}
-    bspc {desktop -f, node -d} "^{1-4}:^{1-9,10}"
-
+# super + {_,shift +} {1-6} ; {1-9,0}
+#     bspc {desktop -f, node -d} "^{1-6}:^{1-9,10}"
 # DO NOT bind super + {1-9,0} or the above will break
 
-super + alt + {1-4}
-	bspc monitor -f "^{1-4}"
-
-
-super + ctrl + alt + shift + {1-9,0}
-	desktop={1-9,10}; \
+super + ctrl + alt + shift + {1-5}
+	desktop={1-5}; \
 	focused=$(bspc query -M -d focused); \
 	for mon in $(bspc query -M); do bspc desktop -f "$mon:^$desktop"; done; \
 	bspc monitor -f $focused
+
+
+super + alt + {_,shift +}{1-6}
+	bspc {monitor -f, node -d} "^{1-6}:focused"
+
+
 
 #
 # preselect
@@ -165,17 +169,16 @@ super + ctrl + shift + space
 #
 
 # expand a window by moving one of its side outward
-super + alt + {h,j,k,l}
+super + {Left,Down,Up,Right}
 	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
-super + alt + shift + {h,j,k,l}
+super + shift + {Left,Down,Up,Right}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # move a floating window
-
-super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+# super + alt {Left,Down,Up,Right}
+# 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 
 
