@@ -20,6 +20,9 @@ case $HOSTNAME in
         bspc rule -a mplayer2 state=floating
         bspc rule -a Kupfer.py focus=on
         bspc rule -a Screenkey manage=off
+
+        bspc config border_width         0
+        bspc config window_gap           0
         ;;
     neptune)
         bspc monitor "eDP-1" --rename "mid"
@@ -37,6 +40,9 @@ case $HOSTNAME in
         bspc rule -a mplayer2 state=floating
         bspc rule -a Kupfer.py focus=on
         bspc rule -a Screenkey manage=off
+
+        bspc config border_width         0
+        bspc config window_gap           0
         ;;
     earth)
         bspc monitor "LVDS-1" --rename "mid"
@@ -54,17 +60,24 @@ case $HOSTNAME in
         bspc rule -a mplayer2 state=floating
         bspc rule -a Kupfer.py focus=on
         bspc rule -a Screenkey manage=off
+
+        bspc config border_width         0
+        bspc config window_gap           0
         ;;
     jupiter)
         bspc monitor "DisplayPort-2" --rename "left"
         bspc monitor "DisplayPort-1" --rename "mid"
         bspc monitor "DisplayPort-0" --rename "right"
-        bspc monitor "HDMI-A-0"      --rename "top"
+        bspc monitor "DVI-D-1-1"     --rename "topleft"
+        bspc monitor "HDMI-A-0"      --rename "topmid"
+        bspc monitor "HDMI-1-2"      --rename "topright"
 
-        bspc monitor "left"  -d    I    II    III    IV    V    VI    VII    VIII    IX   X
-        bspc monitor "mid"   -d   XI   XII   XIII   XIV   XV   XVI   XVII   XVIII   XIX  XX
-        bspc monitor "right" -d  XXI  XXII  XXIII  XXIV  XXV  XXVI  XXVII  XXVIII  XXIX XXX
-        bspc monitor "top"   -d XXXI XXXII XXXIII XXXIV XXXV XXXVI XXXVII XXXVIII XXXIX  XL
+        bspc monitor "left"      -d  I     II     III     IV   V
+        bspc monitor "mid"       -d  VI    VII    VIII    IX   X
+        bspc monitor "right"     -d  XI    XII    XIII    XIV  XV
+        bspc monitor "topleft"   -d  XVI   XVII   XVIII   XIX  XX
+        bspc monitor "topmid"    -d  XXI   XXII   XXIII   XXIV XXV
+        bspc monitor "topright"  -d  XXVI  XXVII  XXVIII  XXIX XXX
 
         # Order monitors for sane keybinds
         first=$(bspc query -M --names | sed -n 1p)
@@ -75,6 +88,12 @@ case $HOSTNAME in
 
         third=$(bspc query -M --names | sed -n 3p)
         [ "$third" = "right" ] || bspc monitor "$third" -s "right"
+
+        fourth=$(bspc query -M --names | sed -n 4p)
+        [ "$fourth" = "topleft" ] || bspc monitor "$fourth" -s "topleft"
+
+        fifth=$(bspc query -M --names | sed -n 5p)
+        [ "$fifth" = "topmid" ] || bspc monitor "$fifth" -s "topmid"
 
         # bspc rule -a Gimp desktop='^5' state=floating follow=on
         # bspc rule -a Emacs desktop='^5' state=tiled
@@ -88,14 +107,14 @@ case $HOSTNAME in
         # bspc rule -a mplayer2 state=floating
         # bspc rule -a Kupfer.py focus=on
         # bspc rule -a Screenkey manage=off
+        bspc config border_width         3
+        bspc config window_gap           3
+
         ;;
 esac
 
 #For polybar
 bspc config top_padding 19
-
-bspc config border_width         0
-bspc config window_gap           0
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
