@@ -42,7 +42,6 @@ volume-med = #ebcb8b
 volume-max = #bf616a
 #+end_src
 * Bars
-
 #+name: mainbar-aesthetic-base
 #+begin_src toml :tangle no
 monitor = ${env:MONITOR}
@@ -220,7 +219,7 @@ modules-right = bspwm-large-6
 <<mainbar-bspwm-base>>
 modules-left = bspwm-1 bspwm-state xwindow
 modules-center =
-modules-right = memory2 cpu2 date battery_mainbar
+modules-right = netstatus memory2 cpu2 date battery_mainbar
 #+end_src
 
 #+name: mainbar-bspwm-2
@@ -229,7 +228,7 @@ modules-right = memory2 cpu2 date battery_mainbar
 <<mainbar-bspwm-base>>
 modules-left = bspwm-2 bspwm-state xwindow
 modules-center =
-modules-right = memory2 cpu2 date battery_mainbar
+modules-right = netstatus memory2 cpu2 date battery_mainbar
 #+end_src
 
 #+name: mainbar-bspwm-3
@@ -238,7 +237,7 @@ modules-right = memory2 cpu2 date battery_mainbar
 <<mainbar-bspwm-base>>
 modules-left = bspwm-3 bspwm-state xwindow
 modules-center =
-modules-right = memory2 cpu2 date battery_mainbar
+modules-right = netstatus memory2 cpu2 date battery_mainbar
 #+end_src
 
 #+name: mainbar-bspwm-4
@@ -247,7 +246,7 @@ modules-right = memory2 cpu2 date battery_mainbar
 <<mainbar-bspwm-base>>
 modules-left = bspwm-4 bspwm-state xwindow
 modules-center =
-modules-right = memory2 cpu2 date battery_mainbar
+modules-right = netstatus memory2 cpu2 date battery_mainbar
 #+end_src
 
 #+name: mainbar-bspwm-5
@@ -256,7 +255,7 @@ modules-right = memory2 cpu2 date battery_mainbar
 <<mainbar-bspwm-base>>
 modules-left = bspwm-5 bspwm-state xwindow
 modules-center =
-modules-right = memory2 cpu2 date battery_mainbar
+modules-right = netstatus memory2 cpu2 date battery_mainbar
 #+end_src
 
 #+name: mainbar-bspwm-6
@@ -265,7 +264,7 @@ modules-right = memory2 cpu2 date battery_mainbar
 <<mainbar-bspwm-base>>
 modules-left = bspwm-6 bspwm-state xwindow
 modules-center =
-modules-right = memory2 cpu2 date battery_mainbar
+modules-right = netstatus memory2 cpu2 date battery_mainbar
 #+end_src
 * Modules
 ** BSPWM
@@ -549,10 +548,20 @@ format-padding = 2
 ;   %percentage% (default) - total cpu load
 ;   %percentage-cores% - load percentage for each core
 ;   %percentage-core[1-9]% - load percentage for specific core
-label = Cpu %percentage:3%%
+label = CPU %percentage%%
 
 ################################################################################
 
+#+end_src
+** module/netstatus
+#+begin_src text :tangle config
+[module/netstatus]
+type = custom/script
+label = %output%
+exec = timeout 0.5 ping -c 1 google.com > /dev/null 2>&1 && echo %{F#0f0}"ONLINE%{F-}" || echo "%{F#f00}OFFLINE%{F-}";
+interval = 1
+format-padding = 2
+format-background = ${colors.background}
 #+end_src
 ** module/memory2
 #+begin_src text :tangle config
@@ -569,7 +578,7 @@ interval = 1
 ;   %mb_used%
 ;   %mb_free%
 ;   %mb_total%
-label = %percentage_used%%
+label = %gb_used% (%percentage_used%%)
 
 format = Mem <label>
 ;format-prefix = "  "
@@ -577,6 +586,7 @@ format-prefix-foreground = #3384d0
 ;format-underline = #3384d0
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
+format-padding = 2
 
 ################################################################################
 
@@ -637,18 +647,19 @@ animation-charging-framerate = 750
 ;https://github.com/jaagr/polybar/wiki/Module:-date
 type = internal/date
 ; Seconds to sleep between updates
-interval = 5
+interval = 1
 ; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
 ; NOTE: if you want to use syntax tags here you need to use %%{...}
 date = " %Y-%m-%d%"
 date-alt = " %d-%m-%Y"
-time = %H:%M
-time-alt = %H:%M
+time = "%H:%I %p"
+time-alt = "%H:%I %p"
 ;format-prefix = " "
 format-prefix-foreground = #c1941a
 ;format-underline = #c1941a
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
+format-padding = 2
 
 label = %time%
 
@@ -661,18 +672,19 @@ label = %time%
 ;https://github.com/jaagr/polybar/wiki/Module:-date
 type = internal/date
 ; Seconds to sleep between updates
-interval = 5
+interval = 1
 ; See "http://en.cppreference.com/w/cpp/io/manip/put_time" for details on how to format the date string
 ; NOTE: if you want to use syntax tags here you need to use %%{...}
 date = " %Y-%m-%d%"
 date-alt = " %d-%m-%Y"
-time = %H:%M
-time-alt = %H:%M
+time = "%H:%M"
+time-alt = "%H:%M"
 ;format-prefix = " "
 format-prefix-foreground = #c1941a
 ;format-underline = #c1941a
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
+format-padding = 2
 
 label = %date% %time%
 
