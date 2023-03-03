@@ -426,7 +426,7 @@
        (racket +lsp +tree-sitter)            ; a DSL for DSLs
        (rest)              ; Emacs as a REST client
        (sh +lsp +tree-sitter)                ; she sells {ba,z,fi}sh shells on the C xor
-       (web)               ; the tubes
+       (web +lsp +tree-sitter)               ; the tubes
        (yaml +lsp +tree-sitter)              ; JSON, but readable
 #+end_src
 **** App
