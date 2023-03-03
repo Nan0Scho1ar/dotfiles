@@ -65,19 +65,16 @@ case $HOSTNAME in
         bspc config window_gap           0
         ;;
     jupiter)
-        bspc monitor "DisplayPort-2" --rename "left"
-        bspc monitor "DisplayPort-1" --rename "mid"
-        bspc monitor "DisplayPort-0" --rename "right"
-        bspc monitor "DVI-D-1-1"     --rename "topleft"
-        bspc monitor "HDMI-A-0"      --rename "topmid"
-        bspc monitor "HDMI-1-2"      --rename "topright"
+        bspc monitor "DisplayPort-1" --rename "left"
+        bspc monitor "HDMI-A-0"      --rename "mid"
+        bspc monitor "DisplayPort-2" --rename "right"
 
         bspc monitor "left"      -d  I     II     III     IV   V
         bspc monitor "mid"       -d  VI    VII    VIII    IX   X
         bspc monitor "right"     -d  XI    XII    XIII    XIV  XV
-        bspc monitor "topleft"   -d  XVI   XVII   XVIII   XIX  XX
-        bspc monitor "topmid"    -d  XXI   XXII   XXIII   XXIV XXV
-        bspc monitor "topright"  -d  XXVI  XXVII  XXVIII  XXIX XXX
+        # bspc monitor "topleft"   -d  XVI   XVII   XVIII   XIX  XX
+        # bspc monitor "topmid"    -d  XXI   XXII   XXIII   XXIV XXV
+        # bspc monitor "topright"  -d  XXVI  XXVII  XXVIII  XXIX XXX
 
         # Order monitors for sane keybinds
         first=$(bspc query -M --names | sed -n 1p)
@@ -89,11 +86,11 @@ case $HOSTNAME in
         third=$(bspc query -M --names | sed -n 3p)
         [ "$third" = "right" ] || bspc monitor "$third" -s "right"
 
-        fourth=$(bspc query -M --names | sed -n 4p)
-        [ "$fourth" = "topleft" ] || bspc monitor "$fourth" -s "topleft"
+        # fourth=$(bspc query -M --names | sed -n 4p)
+        # [ "$fourth" = "topleft" ] || bspc monitor "$fourth" -s "topleft"
 
-        fifth=$(bspc query -M --names | sed -n 5p)
-        [ "$fifth" = "topmid" ] || bspc monitor "$fifth" -s "topmid"
+        # fifth=$(bspc query -M --names | sed -n 5p)
+        # [ "$fifth" = "topmid" ] || bspc monitor "$fifth" -s "topmid"
 
         # bspc rule -a Gimp desktop='^5' state=floating follow=on
         # bspc rule -a Emacs desktop='^5' state=tiled
