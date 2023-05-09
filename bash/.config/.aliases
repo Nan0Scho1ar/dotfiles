@@ -93,8 +93,15 @@ alias \
 ngit() {
     case $1 in
         --configure)
+            echo "Setting git user.name"
             git config --local user.name "nan0scho1ar";
+            echo "Setting git user.email"
             git config --local user.email "scorch267@gmail.com";
+            if [ -f ~/.ssh/config-nan0scho1ar ]; then
+                echo "Setting git core.sshCommand"
+                git config --local core.sshCommand "ssh -F ~/.ssh/config-nan0scho1ar"
+            fi
+            echo "Done!"
         ;;
         *)
             GIT_SSH_COMMAND='ssh -i $HOME/.ssh/nan0scho1ar' git $@
