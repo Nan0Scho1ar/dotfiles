@@ -66,7 +66,7 @@ case $HOSTNAME in
         ;;
     jupiter)
         bspc monitor "DisplayPort-1" --rename "left"
-        bspc monitor "HDMI-A-0"      --rename "mid"
+        bspc monitor "DisplayPort-0" --rename "mid"
         bspc monitor "DisplayPort-2" --rename "right"
 
         bspc monitor "left"      -d  I     II     III     IV   V

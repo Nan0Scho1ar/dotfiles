@@ -74,8 +74,8 @@ case $desktop in
             MONITOR=DisplayPort-1 BARNUM=1 polybar --reload mainbar-bspwm-1     -c ~/.config/polybar/config &
             MONITOR=DisplayPort-1 BARNUM=1 polybar --reload mainbar-aesthetic-1 -c ~/.config/polybar/config &
 
-            MONITOR=HDMI-A-0      BARNUM=2 polybar --reload mainbar-bspwm-2     -c ~/.config/polybar/config &
-            MONITOR=HDMI-A-0      BARNUM=2 polybar --reload mainbar-aesthetic-2 -c ~/.config/polybar/config &
+            MONITOR=DisplayPort-0 BARNUM=2 polybar --reload mainbar-bspwm-2     -c ~/.config/polybar/config &
+            MONITOR=DisplayPort-0 BARNUM=2 polybar --reload mainbar-aesthetic-2 -c ~/.config/polybar/config &
 
             MONITOR=DisplayPort-2 BARNUM=3 polybar --reload mainbar-bspwm-3     -c ~/.config/polybar/config &
             MONITOR=DisplayPort-2 BARNUM=3 polybar --reload mainbar-aesthetic-3 -c ~/.config/polybar/config &
