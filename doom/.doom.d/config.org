@@ -1898,6 +1898,11 @@ to allow the TOC to be a collapseable tree."
 (setq python-prettify-symbols-alist
       '(("lambda"  . ?λ)))
 #+end_src
+*** YAML
+#+begin_src emacs-lisp :tangle config.el
+(setq hs-hide-all-non-comment-function #'ignore)
+(setq-hook! 'yaml-mode-hook hs-hide-comments-when-hiding-all t)
+#+end_src
 ** Elixir
 *** Elixir compile buffer
 #+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
