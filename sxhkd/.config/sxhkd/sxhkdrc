@@ -59,7 +59,7 @@ super + Escape
 # bspwm hotkeys
 #emacs
 
-# quit/restart bspwm
+# restart bspwm
 super + alt + r
 	bspc wm -r
 
