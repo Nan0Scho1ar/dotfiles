@@ -1826,6 +1826,21 @@ to allow the TOC to be a collapseable tree."
 ;;; config.el ends here
 
 #+end_src
+*** Org Transclusion
+**** Both
+#+begin_src emacs-lisp :tangle packages.el
+(package! org-transclusion)
+#+end_src
+#+begin_src emacs-lisp :tangle config.el
+(use-package! org-transclusion
+  :after org
+  :init
+  (map!
+   :map global-map "<f12>" #'org-transclusion-add
+   :leader
+   :prefix "n"
+   :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
+#+end_src
 ** Python
 *** LSP (using doom flag)
 #+begin_src emacs-lisp :tangle no
