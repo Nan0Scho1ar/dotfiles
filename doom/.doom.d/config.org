@@ -1980,6 +1980,12 @@ to allow the TOC to be a collapseable tree."
 #+begin_src emacs-lisp :tangle config.el
 (map! :map sql-interactive-mode-map :v "gr" #'sqleye-send-region-and-deselect)
 #+end_src
+** Racket
+*** CFtool
+#+begin_src emacs-lisp :tangle config.el
+(add-to-list 'auto-mode-alist '("\\.cft\\'" . racket-mode))
+#+end_src
+
 * Project
 ** Gitmanager
 *** Install Package
