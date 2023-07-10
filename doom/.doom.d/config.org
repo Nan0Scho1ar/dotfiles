@@ -781,7 +781,7 @@ To make VLF available without delaying startup, we'll just load it in quiet mome
      (build-org-capture-template
       (downcase key) (format "TODO %sScheduled" prompt) heading "TODO" tags t)
      (build-org-capture-template
-      (upcase key) (format "TODO %sUnscheduled" prompt) heading "TODO" tags t))))
+      (upcase key) (format "TODO %sUnscheduled" prompt) heading "TODO" tags 'nil))))
 
 (defun build-org-todo-capture-templates (pairs)
   (mapcan (lambda (y) (build-org-todo-capture-template (car y) (cadr y))) pairs))
