@@ -47,23 +47,21 @@ ps1() {
     fi
     _ps1_pwd="[${yellow}$(pwd | sed "s|$HOME|~|")${reset}]"
     _ps1_userhostshell="[${yellow}$(whoami)${reset}@${cyan}$(hostname)${yellow}(bash)${reset}${reset}]─"
-
-    # TODO Finish this
-    if [ -n "$ENV" ]; then
-        _ps1_ENV="[${white}ENV${reset}='${magenta}$ENV${reset}']"
-    else
-        _ps1_ENV=''
-    fi
     if [ -n "$AWS_PROFILE" ]; then
-        _ps1_aws_profile="[${white}AWS_PROFILE${reset}='${magenta}$AWS_PROFILE${reset}']"
+        _ps1_aws_profile="─[${magenta}$AWS_PROFILE${reset}]"
     else
         _ps1_aws_profile=''
     fi
-    _ps1_env_line="${_ps1_aws_profile} ${_ps1_ENV}"
+
+    # # TODO Finish this
+    # if [ -n "$ENV" ]; then
+    #     _ps1_ENV="[${white}ENV${reset}='${magenta}$ENV${reset}']"
+    # else
+    #     _ps1_ENV=''
+    # fi
 
 
-    echo "${reset}┌─${_ps1_error}${_ps1_userhostshell}${_ps1_pwd} $(branch_with_status) $VIRTUAL_ENV_PROMPT"
-    # [ -n "$_ps1_env_line" ] && echo "$_ps1_env_line"
+    echo "${reset}┌─${_ps1_error}${_ps1_userhostshell}${_ps1_pwd}${_ps1_aws_profile} $(branch_with_status) $VIRTUAL_ENV_PROMPT"
     echo "└──╼ "
 }
 export PS1='$(ps1)'
