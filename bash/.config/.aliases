@@ -1,5 +1,3 @@
-alias vc='cd /media/veracrypt1'
-
 #Show
 alias \
     showalias='echo ${BASH_ALIASES[`compgen -a | fzf`]}' \
@@ -14,8 +12,7 @@ alias \
     org='emacsclient -c "$HOME/nextcloud/org" & disown' \
     orgq='emacsclient -c "$HOME/nextcloud/org" & disown && exit' \
     todo='emacs --name "todos" -f "n0s1-agenda-day-view" & disown' \
-    emacsd='emacs --daemon & disown && exit' \
-    rider='bash ~/Rider/bin/rider.sh'
+    emacsd='emacs --daemon & disown && exit'
 
 #Find files
 alias \
@@ -97,11 +94,8 @@ ngit() {
             git config --local user.name "nan0scho1ar";
             echo "Setting git user.email"
             git config --local user.email "scorch267@gmail.com";
-            if [ -f ~/.ssh/config-nan0scho1ar ]; then
-                echo "Setting git core.sshCommand"
-                git config --local core.sshCommand "ssh -F ~/.ssh/config-nan0scho1ar"
-            fi
             echo "Done!"
+            git remote set-url origin $(git remote get-url origin | sed "s/bitbucket\.org/bitbucket-personal/; s/github\.com/github-personal/")
         ;;
         *)
             GIT_SSH_COMMAND='ssh -i $HOME/.ssh/nan0scho1ar' git $@
@@ -117,10 +111,13 @@ alias \
 
 #Include hidden
 alias \
-    fdh='fd --hidden' \
+    rgc='rg -B5 -A5 -M300' \
     rgh='rg --hidden' \
+    rghc='rg --hidden -B5 -A5 -M300' \
+    rga='rg -uu' \
+    rgac='rg -uu -B5 -A5 -M300' \
+    fdh='fd --hidden' \
     fdha='fd -uu' \
-    rgha='rg -uu'
 
 alias pD='pd fzf'
 
