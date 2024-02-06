@@ -408,10 +408,12 @@
        :lang
        (cc +lsp +tree-sitter)                ; C > C++ == 1
        (clojure +lsp +tree-sitter)           ; java with a lisp
+       (csharp +lsp +dotnet +unity +tree-sitter)            ; unity, .NET, and mono shenanigans
        (data)              ; config/data formats
        (elixir +lsp +tree-sitter)            ; erlang done right
        (emacs-lisp +tree-sitter)        ; drown in parentheses
        (go +lsp +tree-sitter)         ; the hipster dialect
+       (graphql +lsp +tree-sitter)
        (json +lsp +tree-sitter)              ; At least it ain't XML
        (javascript +lsp +tree-sitter)        ; all(hope(abandon(ye(who(enter(here))))))
        (markdown +grip +tree-sitter)          ; writing docs for people to ignore
@@ -425,6 +427,7 @@
                +pyenv +tree-sitter)            ; beautiful is better than ugly
        (racket +lsp +tree-sitter)            ; a DSL for DSLs
        (rest)              ; Emacs as a REST client
+       (rust +lsp +tree-sitter)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        (sh +lsp +tree-sitter)                ; she sells {ba,z,fi}sh shells on the C xor
        (web +lsp +tree-sitter)               ; the tubes
        (yaml +lsp +tree-sitter)              ; JSON, but readable
@@ -517,6 +520,23 @@ Highlight trailing whitespace and lines greater than 80 chars
       whitespace-style '(trailing lines space-before-tab
                                   indentation space-after-tab))
 #+end_src
+** Show workspace bar during SPC Tab
+#+begin_src emacs-lisp :tangle config.el
+;; (defadvice! rigor/which-key-show-workspace (orig-fun &rest pages-obj)
+;;   "Show my workspaces in the echo thingy"
+;;   :around #'which-key--process-page
+;;   (let ((out (apply orig-fun pages-obj))
+;;         (prefix-title (which-key--pages-prefix-title (car pages-obj))))
+;;     (if (not (string-equal prefix-title "workspace"))
+;;         out
+;;       (cons (car out)
+;;             (lambda ()
+;;               ;; (+workspace/display)
+;;               (funcall (cdr out))
+;;               ))
+;;       )))
+#+end_src
+
 * Editor
 ** tilt scroll
 #+begin_src emacs-lisp :tangle config.el
@@ -632,6 +652,7 @@ To make VLF available without delaying startup, we'll just load it in quiet mome
 ;; (use-package! vlf-setup
 ;;   :defer-incrementally vlf-tune vlf-base vlf-write vlf-search vlf-occur vlf-follow vlf-ediff vlf)
 #+end_src
+
 * Langs
 ** General Code
 *** Box comments (rebox2)
@@ -1926,7 +1947,7 @@ to allow the TOC to be a collapseable tree."
       :n "C-c C-c" #'alchemist-iex-compile-this-buffer-and-go)
 #+end_src
 *** Alchemist
-#+begin_src emacs-lisp :tangle (if work-config "config.el" "no")
+#+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
 (after! alchemist
   (set-repl-handler! 'elixir-mode #'alchemist-iex-run)
   (add-hook 'elixir-mode-hook
