@@ -558,8 +558,8 @@ label = CPU %percentage%%
 [module/netstatus]
 type = custom/script
 label = %output%
-exec = timeout 0.5 ping -c 1 google.com > /dev/null 2>&1 && echo %{F#0f0}"ONLINE%{F-}" || echo "%{F#f00}OFFLINE%{F-}";
-interval = 1
+exec = timeout 1 ping -c 1 google.com > /dev/null 2>&1 && echo %{F#0f0}"ONLINE%{F-}" || echo "%{F#f00}OFFLINE%{F-}";
+interval = 2
 format-padding = 2
 format-background = ${colors.background}
 #+end_src
