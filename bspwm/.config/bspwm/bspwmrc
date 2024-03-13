@@ -65,9 +65,9 @@ case $HOSTNAME in
         bspc config window_gap           0
         ;;
     jupiter)
-        bspc monitor "DisplayPort-1" --rename "left"
-        bspc monitor "DisplayPort-0" --rename "mid"
-        bspc monitor "DisplayPort-2" --rename "right"
+        bspc monitor "DP-2" --rename "left"
+        bspc monitor "DP-4" --rename "mid"
+        bspc monitor "DP-3" --rename "right"
 
         bspc monitor "left"      -d  I     II     III     IV   V
         bspc monitor "mid"       -d  VI    VII    VIII    IX   X

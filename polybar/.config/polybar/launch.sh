@@ -71,14 +71,14 @@ case $desktop in
 
     bspwm|/usr/share/xsessions/bspwm)
         if [ $HOSTNAME == "jupiter" ]; then
-            MONITOR=DisplayPort-1 BARNUM=1 polybar --reload mainbar-bspwm-1     -c ~/.config/polybar/config &
-            MONITOR=DisplayPort-1 BARNUM=1 polybar --reload mainbar-aesthetic-1 -c ~/.config/polybar/config &
+            MONITOR=DP-2 BARNUM=1 polybar --reload mainbar-bspwm-1     -c ~/.config/polybar/config &
+            MONITOR=DP-2 BARNUM=1 polybar --reload mainbar-aesthetic-1 -c ~/.config/polybar/config &
 
-            MONITOR=DisplayPort-0 BARNUM=2 polybar --reload mainbar-bspwm-2     -c ~/.config/polybar/config &
-            MONITOR=DisplayPort-0 BARNUM=2 polybar --reload mainbar-aesthetic-2 -c ~/.config/polybar/config &
+            MONITOR=DP-4 BARNUM=2 polybar --reload mainbar-bspwm-2     -c ~/.config/polybar/config &
+            MONITOR=DP-4 BARNUM=2 polybar --reload mainbar-aesthetic-2 -c ~/.config/polybar/config &
 
-            MONITOR=DisplayPort-2 BARNUM=3 polybar --reload mainbar-bspwm-3     -c ~/.config/polybar/config &
-            MONITOR=DisplayPort-2 BARNUM=3 polybar --reload mainbar-aesthetic-3 -c ~/.config/polybar/config &
+            MONITOR=DP-3 BARNUM=3 polybar --reload mainbar-bspwm-3     -c ~/.config/polybar/config &
+            MONITOR=DP-3 BARNUM=3 polybar --reload mainbar-aesthetic-3 -c ~/.config/polybar/config &
 
             # MONITOR=DVI-D-1-1     BARNUM=4 polybar --reload mainbar-bspwm-4     -c ~/.config/polybar/config &
             # MONITOR=DVI-D-1-1     BARNUM=4 polybar --reload mainbar-aesthetic-4 -c ~/.config/polybar/config &
