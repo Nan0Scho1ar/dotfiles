@@ -160,3 +160,6 @@ instance = "Alacritty"
 [window.padding]
 x = 0
 y = 0
+
+# [terminal]
+# shell = "~/.cargo/bin/nu"
