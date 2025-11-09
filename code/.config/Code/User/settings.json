@@ -1,0 +1,59 @@
+{
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "zenMode.showTabs": "single",
+  "zenMode.restore": false,
+  "editor.minimap.autohide": "mouseover",
+  "editor.scrollbar.verticalScrollbarSize": 3,
+  "editor.scrollbar.horizontalScrollbarSize": 3,
+  "zenMode.fullScreen": false,
+  "window.customTitleBarVisibility": "windowed",
+  "window.density.editorTabHeight": "compact",
+  "window.menuBarVisibility": "toggle",
+  "window.titleBarStyle": "native",
+  "workbench.navigationControl.enabled": false,
+  "window.commandCenter": false,
+  "workbench.layoutControl.enabled": false,
+  "editor.lineNumbers": "relative",
+  "workbench.editor.scrollToSwitchTabs": true,
+  "vim.replaceWithRegister": true,
+  "vim.useSystemClipboard": true,
+  "vim.camelCaseMotion.enable": true,
+  "vim.easymotion": true,
+  "vim.smartRelativeLine": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["S"],
+      "after": ["leader", "leader", "s"]
+    }
+  ],
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "yaml.schemas": {
+    "file:///home/chmackinga/.vscode/extensions/atlassian.atlascode-4.0.7/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+  },
+  "atlascode.bitbucket.pipelines.monitorEnabled": false,
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": true
+    },
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "explorer.confirmDelete": false,
+  "git.openRepositoryInParentFolders": "never",
+  "terminal.integrated.hideOnStartup": "always",
+  "accessibility.underlineLinks": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "atlascode.jira.explorer.monitorEnabled": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
