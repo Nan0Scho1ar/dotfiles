@@ -1,3 +1,5 @@
+export TZ='Australia/Brisbane'
+
 export NREPOS="$HOME/repos/me"
 export NCORE="$NREPOS/n0s1.core"
 export NDOT="$NREPOS/dotfiles"
@@ -39,3 +41,4 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 . "$HOME/.cargo/env"
+. "$HOME/.local/bin/env"

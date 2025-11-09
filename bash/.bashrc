@@ -244,4 +244,6 @@ if command -v pyenv >/dev/null; then
 	export PATH="$PYENV_ROOT/bin:$PATH"
 	eval "$(pyenv init -)"
 fi
+
 . "$HOME/.cargo/env"
+. "$HOME/.local/bin/env"
