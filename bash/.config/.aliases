@@ -1,3 +1,6 @@
+# Flatpacks
+alias cryptomator='flatpak run org.cryptomator.Cryptomator'
+
 #Show
 alias \
     showalias='echo ${BASH_ALIASES[`compgen -a | fzf`]}' \

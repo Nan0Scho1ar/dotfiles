@@ -1,10 +1,18 @@
 READ_RCFILE=true
+
+if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+    echo "Remember to start tmux"
+    #tt;
+fi
+
 [ "$READ_PROFILE" != "true" ] && [[ -f $HOME/.profile ]] && . $HOME/.profile
 
 if [[ $- == *i* ]]; then
     setfont /usr/share/kbd/consolefonts/Lat2-Terminus16.psfu.gz > /dev/null 2>&1
 
-    n0s1 -g
+    if command -v n0s1 >/dev/null; then
+	    n0s1 -g
+    fi
 
     green=`tput setaf 2`
     red=`tput setaf 1`
@@ -81,14 +89,14 @@ elif [[ $- == *i* ]]; then
     which keychain 1>/dev/null 2>&1 && eval `keychain -q --eval id_rsa`
 fi
 
-source $XDG_CONFIG_HOME/.aliases
-source $NREPOS/gitmanager/.git_aliases
-
-
-if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
-    echo "Remember to start tmux"
-    #tt;
+export XDG_CONFIG_HOME=$HOME/.config
+if [[ -f $XDG_CONFIG_HOME/.aliases ]]; then
+	source $XDG_CONFIG_HOME/.aliases
 fi
+if [[ -f $NREPOS/gitmanager/.git_aliases ]]; then
+	source $NREPOS/gitmanager/.git_aliases
+fi
+
 
 #This line seems to break graphical logins
 #export HISTFILE="$XDG_DATA_HOME"/bash/history
@@ -226,8 +234,14 @@ shopt -s expand_aliases
 
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
-eval "$(direnv hook bash)"
 
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if command -v direnv >/dev/null; then
+	eval "$(direnv hook bash)"
+fi
+
+if command -v pyenv >/dev/null; then
+	export PYENV_ROOT="$HOME/.pyenv"
+	export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init -)"
+fi
+. "$HOME/.cargo/env"

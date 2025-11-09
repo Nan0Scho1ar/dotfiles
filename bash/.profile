@@ -31,9 +31,11 @@ fi
 export WM="bspwm"
 
 SCRIPT_PATHS="$($NCORE/out/mkpath $NSCR)"
-export PATH="$PATH:$SCRIPT_PATHS:$NREPOS/n0s1.core/out:$HOME/.cargo/bin:$HOME/.emacs.d/bin:$HOME/.local/bin"
+export PATH="$PATH:$SCRIPT_PATHS:$NREPOS/n0s1.core/out:$HOME/.cargo/bin:$HOME/.config/emacs/bin:$HOME/.local/bin"
 
 READ_PROFILE=true
 [ "$READ_RCFILE" != "true" ] && [[ -f $HOME/.bashrc ]] && . $HOME/.bashrc
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
+. "$HOME/.cargo/env"

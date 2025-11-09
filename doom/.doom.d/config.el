@@ -1,473 +1,15 @@
-#+title: Nan0Scho1ar
-#+STARTUP: overview
-* Config Tangle Setting
-:PROPERTIES:
-:VISIBILITY: folded
-:END:
-** Work
-#+begin_src emacs-lisp :tangle (if work-config "config.el" "no")
-(setq home-config nil
-      work-config t)
-#+end_src
-
-** Home
-#+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
 (setq home-config t
       work-config nil)
-#+end_src
 
-#+RESULTS:
-
-* Doom File Headers
-:PROPERTIES:
-:VISIBILITY: folded
-:END:
-** Init.el
-#+begin_src emacs-lisp :tangle no
-;;; init.el -*- lexical-binding: t; -*-
-
-;; This file controls what Doom modules are enabled and what order they load
-;; in. Remember to run 'doom sync' after modifying it!
-
-;; NOTE Press 'SPC h d h' (or 'C-h d h' for non-vim users) to access Doom's
-;;      documentation. There you'll find a "Module Index" link where you'll find
-;;      a comprehensive list of Doom's modules and what flags they support.
-
-;; NOTE Move your cursor over a module's name (or its flags) and press 'K' (or
-;;      'C-c c k' for non-vim users) to view its documentation. This works on
-;;      flags as well (those symbols that start with a plus).
-;;
-;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
-;;      directory (for easy access to its source code).
-
-#+end_src
-** Config.el
-#+begin_src emacs-lisp :tangle no
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
-
-
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
-;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-
-
-;; Here are some additional functions/macros that could help you configure Doom:
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
-
-#+end_src
-** Packages.el
-#+begin_src emacs-lisp :tangle no
-;; -*- no-byte-compile: t; -*-
-;;; $DOOMDIR/packages.el
-
-;; To install a package with Doom you must declare them here and run 'doom sync'
-;; on the command line, then restart Emacs for the changes to take effect -- or
-;; use 'M-x doom/reload'.
-
-
-;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
-;(package! some-package)
-
-;; To install a package directly from a remote git repo, you must specify a
-;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
-;; https://github.com/raxod502/straight.el#the-recipe-format
-;(package! another-package
-;  :recipe (:host github :repo "username/repo"))
-
-;; If the package you are trying to install does not contain a PACKAGENAME.el
-;; file, or is located in a subdirectory of the repo, you'll need to specify
-;; `:files' in the `:recipe':
-;(package! this-package
-;  :recipe (:host github :repo "username/repo"
-;           :files ("some-file.el" "src/lisp/*.el")))
-
-;; If you'd like to disable a package included with Doom, you can do so here
-;; with the `:disable' property:
-;(package! builtin-package :disable t)
-
-;; You can override the recipe of a built in package without having to specify
-;; all the properties for `:recipe'. These will inherit the rest of its recipe
-;; from Doom or MELPA/ELPA/Emacsmirror:
-;(package! builtin-package :recipe (:nonrecursive t))
-;(package! builtin-package-2 :recipe (:repo "myfork/package"))
-
-;; Specify a `:branch' to install a package from a particular branch or tag.
-;; This is required for some packages whose default branch isn't 'master' (which
-;; our package manager can't deal with; see raxod502/straight.el#279)
-;(package! builtin-package :recipe (:branch "develop"))
-
-;; Use `:pin' to specify a particular commit to install.
-;(package! builtin-package :pin "1a2b3c4d5e")
-
-
-;; Doom's packages are pinned to a specific commit and updated from release to
-;; release. The `unpin!' macro allows you to unpin single packages...
-;(unpin! pinned-package)
-;; ...or multiple packages
-;(unpin! pinned-package another-pinned-package)
-;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
-;(unpin! t)
-
-;;; Code:
-
-#+end_src
-* Init.el
-** Home
-*** Config toggle
-#+begin_src emacs-lisp :tangle (if home-config "init.el" "no")
-(setq home-config t
-      work-config nil)
-#+end_src
-*** Doom Block
-**** BEGIN
-#+begin_src emacs-lisp :tangle (if home-config "init.el" "no")
-(doom!
-#+end_src
-**** Completion Framework
-#+begin_src emacs-lisp :tangle (if home-config "init.el" "no")
-       :completion
-       company           ; the ultimate code completion backend
-       vertico             ; the search engine of the future
-#+end_src
-**** UI
-#+begin_src emacs-lisp :tangle (if home-config "init.el" "no")
-       :ui
-       doom              ; what makes DOOM look the way it does
-       doom-dashboard    ; a nifty splash screen for Emacs
-       doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-       indent-guides     ; highlighted indent columns
-       ligatures         ; ligatures and symbols to make your code pretty again
-       minimap           ; show a map of the code on the side
-       modeline          ; snazzy, Atom-inspired modeline, plus API
-       nav-flash         ; blink cursor line after big motions
-       ophints           ; highlight the region an operation acts on
-       (popup +defaults)   ; tame sudden yet inevitable temporary windows
-       tabs              ; a tab bar for Emacs
-       treemacs          ; a project drawer, like neotree but cooler
-       unicode           ; extended unicode support for various languages
-       vc-gutter         ; vcs diff in the fringe
-       vi-tilde-fringe   ; fringe tildes to mark beyond EOB
-       window-select     ; visually switch windows
-       workspaces        ; tab emulation, persistence & separate workspaces
-       zen               ; distraction-free coding or writing
-#+end_src
-**** Editor
-#+begin_src emacs-lisp :tangle (if home-config "init.el" "no")
-       :editor
-       (evil +everywhere); come to the dark side, we have cookies
-       file-templates    ; auto-snippets for empty files
-       fold              ; (nigh) universal code folding
-       (format +onsave)  ; automated prettiness
-       lispy             ; vim for lisp, for people who don't like vim
-       snippets          ; my elves. They type so I don't have to
-       word-wrap         ; soft wrapping with language-aware indent
-#+end_src
-**** Emacs
-#+begin_src emacs-lisp :tangle (if home-config "init.el" "no")
-       :emacs
-       dired             ; making dired pretty [functional]
-       electric          ; smarter, keyword-based electric-indent
-       ibuffer         ; interactive buffer management
-       undo              ; persistent, smarter undo for your inevitable mistakes
-       vc                ; version-control and Emacs, sitting in a tree
-#+end_src
-**** Term
-#+begin_src emacs-lisp :tangle (if home-config "init.el" "no")
-       :term
-       eshell            ; the elisp shell that works everywhere
-       vterm             ; the best terminal emulation in Emacs
-#+end_src
-**** Checkers
-#+begin_src emacs-lisp :tangle (if home-config "init.el" "no")
-       :checkers
-       syntax              ; tasing you for every semicolon you forget
-       (spell +flyspell) ; tasing you for misspelling mispelling
-       grammar           ; tasing grammar mistake every you make
-#+end_src
-**** Tools
- #+begin_src emacs-lisp :tangle (if home-config "init.el" "no")
-       :tools
-       editorconfig
-       docker
-       direnv
-       ein               ; tame Jupyter notebooks with emacs
-       (eval +overlay)     ; run code, run (also, repls)
-       (lookup +dictionary +offline)              ; navigate your code and its documentation
-       lsp               ; M-x vscode
-       magit             ; a git porcelain for Emacs
-       make              ; run make tasks from Emacs
-       pass              ; password manager for nerds
-       pdf               ; pdf enhancements
-       rgb               ; creating color strings
-       tree-sitter       ; syntax and parsing, sitting in a tree...
-#+end_src
-**** OS
-#+begin_src emacs-lisp :tangle (if home-config "init.el" "no")
-       :os
-       (:if IS-MAC macos)  ; improve compatibility with macOS
-       tty               ; improve the terminal Emacs experience
-#+end_src
-**** Languages
-#+begin_src emacs-lisp :tangle (if home-config "init.el" "no")
-       :lang
-       (beancount +lsp)         ; mind the GAAP
-       (cc +lsp +tree-sitter)                ; C > C++ == 1
-       (clojure +lsp +tree-sitter)           ; java with a lisp
-       (common-lisp +lsp +tree-sitter)       ; if you've seen one lisp, you've seen them all
-       (coq)               ; proofs-as-programs
-       (csharp +lsp +dotnet +unity +tree-sitter)            ; unity, .NET, and mono shenanigans
-       (data +lsp +tree-sitter)              ; config/data formats
-       (elixir +lsp +tree-sitter)            ; erlang done right
-       (emacs-lisp +lsp +tree-sitter)        ; drown in parentheses
-       (erlang +lsp +tree-sitter)            ; an elegant language for a more civilized age
-       (ess +lsp +tree-sitter)               ; emacs speaks statistics
-       (gdscript +lsp +tree-sitter)          ; the language you waited for
-       (go +lsp +tree-sitter)         ; the hipster dialect
-       (haskell +dante +tree-sitter)  ; a language that's lazier than I am
-       (json +lsp +tree-sitter)              ; At least it ain't XML
-       (java +meghanada +lsp +tree-sitter) ; the poster child for carpal tunnel syndrome
-       (javascript +lsp +tree-sitter)        ; all(hope(abandon(ye(who(enter(here))))))
-       (julia +lsp +tree-sitter)             ; a better, faster MATLAB
-       (latex +lsp)             ; writing papers in Emacs has never been so fun
-       (lua +lsp +tree-sitter)               ; one-based indices? one-based indices
-       (markdown +grip +tree-sitter)          ; writing docs for people to ignore
-       (org +dragndrop
-            +gnuplot +hugo
-            +jupyter +pandoc
-            +pomodoro +present
-            +pretty +roam2 +tree-sitter)               ; organize your plain life in plain text
-       (php +lsp +tree-sitter)               ; perl's insecure younger brother
-       (plantuml)          ; diagrams for confusing people more
-       (python +lsp +pyright +pyenv +black +tree-sitter)            ; beautiful is better than ugly
-       (qt)                ; the 'cutest' gui framework ever
-       (racket +lsp +tree-sitter)            ; a DSL for DSLs
-       (rest)              ; Emacs as a REST client
-       (ruby +rails +tree-sitter)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       (rust +lsp +tree-sitter)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
-       (scheme +guile +tree-sitter)   ; a fully conniving family of lisps
-       (sh +lsp +tree-sitter)                ; she sells {ba,z,fi}sh shells on the C xor
-       (web +lsp +tree-sitter)               ; the tubes
-       (yaml +lsp +tree-sitter)              ; JSON, but readable
-#+end_src
-**** Email
-#+begin_src emacs-lisp :tangle (if home-config "init.el" "no")
-       :email
-       (mu4e +gmail)
-#+end_src
-**** App
-#+begin_src emacs-lisp :tangle (if home-config "init.el" "no")
-       :app
-       calendar
-       emms
-       everywhere        ; *leave* Emacs!? You must be joking
-       irc               ; how neckbeards socialize
-       (rss +org)        ; emacs as an RSS reader
-#+end_src
-**** Config
-#+begin_src emacs-lisp :tangle (if home-config "init.el" "no")
-       :config
-       literate
-       (default +bindings +smartparens)
-#+end_src
-**** END
-#+begin_src emacs-lisp :tangle (if home-config "init.el" "no")
-)
-#+end_src
-** Work
-*** Config toggle
-#+begin_src emacs-lisp :tangle (if work-config "init.el" "no")
-(setq work-config t
-      home-config nil)
-#+end_src
-*** Doom Block
-**** BEGIN
-#+begin_src emacs-lisp :tangle (if work-config "init.el" "no")
-(doom!
-#+end_src
-**** Completion Framework
-#+begin_src emacs-lisp :tangle (if work-config "init.el" "no")
-       :completion
-       company           ; the ultimate code completion backend
-       vertico             ; the search engine of the future
-#+end_src
-**** UI
-#+begin_src emacs-lisp :tangle (if work-config "init.el" "no")
-       :ui
-       doom              ; what makes DOOM look the way it does
-       doom-dashboard    ; a nifty splash screen for Emacs
-       doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-       indent-guides     ; highlighted indent columns
-       ligatures         ; ligatures and symbols to make your code pretty again
-       minimap           ; show a map of the code on the side
-       modeline          ; snazzy, Atom-inspired modeline, plus API
-       nav-flash         ; blink cursor line after big motions
-       ophints           ; highlight the region an operation acts on
-       (popup +defaults)   ; tame sudden yet inevitable temporary windows
-       ;; tabs              ; a tab bar for Emacs
-       treemacs          ; a project drawer, like neotree but cooler
-       unicode           ; extended unicode support for various languages
-       vc-gutter         ; vcs diff in the fringe
-       vi-tilde-fringe   ; fringe tildes to mark beyond EOB
-       window-select     ; visually switch windows
-       workspaces        ; tab emulation, persistence & separate workspaces
-       zen               ; distraction-free coding or writing
-#+end_src
-**** Editor
-#+begin_src emacs-lisp :tangle (if work-config "init.el" "no")
-       :editor
-       (evil +everywhere); come to the dark side, we have cookies
-       file-templates    ; auto-snippets for empty files
-       fold              ; (nigh) universal code folding
-       (format +onsave)  ; automated prettiness
-       lispy             ; vim for lisp, for people who don't like vim
-       snippets          ; my elves. They type so I don't have to
-       word-wrap         ; soft wrapping with language-aware indent
-#+end_src
-**** Emacs
-#+begin_src emacs-lisp :tangle (if work-config "init.el" "no")
-       :emacs
-       dired             ; making dired pretty [functional]
-       electric          ; smarter, keyword-based electric-indent
-       ibuffer         ; interactive buffer management
-       undo              ; persistent, smarter undo for your inevitable mistakes
-       vc                ; version-control and Emacs, sitting in a tree
-#+end_src
-**** Terminal
-#+begin_src emacs-lisp :tangle (if work-config "init.el" "no")
-       :term
-       eshell            ; the elisp shell that works everywhere
-       vterm             ; the best terminal emulation in Emacs
-#+end_src
-**** Checkers
-#+begin_src emacs-lisp :tangle (if work-config "init.el" "no")
-       :checkers
-       syntax              ; tasing you for every semicolon you forget
-       (spell +flyspell) ; tasing you for misspelling mispelling
-       grammar           ; tasing grammar mistake every you make
-#+end_src
-**** Tools
-#+begin_src emacs-lisp :tangle (if work-config "init.el" "no")
-       :tools
-       direnv
-       editorconfig
-       (docker +lsp)
-       (eval +overlay)
-       (lookup +dictionary +offline)              ; navigate your code and its documentation
-       (lsp +peek)               ; M-x vscode
-       magit             ; a git porcelain for Emacs
-       make              ; run make tasks from Emacs
-       pass              ; password manager for nerds
-       pdf               ; pdf enhancements
-       rgb               ; creating color strings
-       tree-sitter       ; syntax and parsing, sitting in a tree...
-#+end_src
-**** OS
-#+begin_src emacs-lisp :tangle (if work-config "init.el" "no")
-       :os
-       (:if IS-MAC macos)  ; improve compatibility with macOS
-       tty               ; improve the terminal Emacs experience
-#+end_src
-**** Languages
-#+begin_src emacs-lisp :tangle (if work-config "init.el" "no")
-       :lang
-       (cc +lsp +tree-sitter)                ; C > C++ == 1
-       (clojure +lsp +tree-sitter)           ; java with a lisp
-       (csharp +lsp +dotnet +unity +tree-sitter)            ; unity, .NET, and mono shenanigans
-       (data)              ; config/data formats
-       (elixir +lsp +tree-sitter)            ; erlang done right
-       (emacs-lisp +tree-sitter)        ; drown in parentheses
-       (go +lsp +tree-sitter)         ; the hipster dialect
-       (graphql +lsp +tree-sitter)
-       (json +lsp +tree-sitter)              ; At least it ain't XML
-       (javascript +lsp +tree-sitter)        ; all(hope(abandon(ye(who(enter(here))))))
-       (markdown +grip +tree-sitter)          ; writing docs for people to ignore
-       (org +dragndrop +gnuplot
-            +hugo +jupyter
-            +pandoc +pomodoro
-            +present +pretty
-            +roam2 +tree-sitter)               ; organize your plain life in plain text
-       (php +lsp +tree-sitter)               ; perl's insecure younger brother
-       (python +lsp +pyright
-               +pyenv +tree-sitter)            ; beautiful is better than ugly
-       (racket +lsp +tree-sitter)            ; a DSL for DSLs
-       (rest)              ; Emacs as a REST client
-       (rust +lsp +tree-sitter)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
-       (sh +lsp +tree-sitter)                ; she sells {ba,z,fi}sh shells on the C xor
-       (web +lsp +tree-sitter)               ; the tubes
-       (yaml +lsp +tree-sitter)              ; JSON, but readable
-#+end_src
-**** App
-#+begin_src emacs-lisp :tangle (if work-config "init.el" "no")
-       :app
-       calendar
-       everywhere        ; *leave* Emacs!? You must be joking
-#+end_src
-**** Config
-#+begin_src emacs-lisp :tangle (if work-config "init.el" "no")
-       :config
-       literate
-       (default +bindings +smartparens)
-#+end_src
-**** END
-#+begin_src emacs-lisp :tangle (if work-config "init.el" "no")
-)
-#+end_src
-* Load private info
-#+begin_src emacs-lisp :tangle config.el
 (when (file-exists-p! "config-local.el" doom-private-dir)
   (load! "config-local.el" doom-private-dir))
-#+end_src
-* User Info
-#+begin_src emacs-lisp :tangle config.el
+
 (setq user-full-name pii/user-full-name
       user-mail-address pii/user-mail-address)
-#+end_src
-* Aesthetics
-** Theme
-#+begin_src emacs-lisp :tangle config.el
+
 (setq doom-theme 'doom-dark-purple)
 (setq display-line-numbers-type 'relative)
-#+end_src
-** Font
-#+begin_src emacs-lisp :tangle config.el
+
 (setq doom-font (font-spec :family "JetBrains Mono" :size 14)
       doom-variable-pitch-font (font-spec :family "JetBrains Mono" :size 14)
       doom-big-font (font-spec :family "JetBrains Mono" :size 24))
@@ -477,21 +19,12 @@
 (custom-set-faces!
   '(font-lock-comment-face :slant italic)
   '(font-lock-keyword-face :slant italic))
-#+end_src
-** Smooth Scrolling
-*** Package
-#+begin_src emacs-lisp :tangle packages.el
-(package! smooth-scroll)
-#+end_src
-*** Config
-#+begin_src emacs-lisp :tangle config.el
+
 (use-package smooth-scroll
   :init
   (setq smooth-scroll/vscroll-step-size 4
         smooth-scroll-mode t))
-#+end_src
-** HL TODO KEYWORD FACES
-#+begin_src elisp :tangle config.el
+
 (after! hl-todo
   (setq hl-todo-keyword-faces '(("TODO" warning bold)
                                 ("FIXME" error bold)
@@ -506,24 +39,14 @@
                                 ("DEPRECATED" font-lock-doc-face bold)
                                 ("BUG" error bold)
                                 ("XXX" font-lock-constant-face bold))))
-#+end_src
-** Beacon
-#+begin_src emacs-lisp :tangle packages.el
-(package! beacon)
-#+end_src
-#+begin_src emacs-lisp :tangle config.el
+
 (use-package! beacon)
 (beacon-mode 1)
-#+end_src
-** Highlight trailing whitespace
-Highlight trailing whitespace and lines greater than 80 chars
-#+begin_src emacs-lisp :tangle config.el
+
 (setq whitespace-line-column 80
       whitespace-style '(trailing lines space-before-tab
                                   indentation space-after-tab))
-#+end_src
-** Show workspace bar during SPC Tab
-#+begin_src emacs-lisp :tangle config.el
+
 ;; (defadvice! rigor/which-key-show-workspace (orig-fun &rest pages-obj)
 ;;   "Show my workspaces in the echo thingy"
 ;;   :around #'which-key--process-page
@@ -537,15 +60,9 @@ Highlight trailing whitespace and lines greater than 80 chars
 ;;               (funcall (cdr out))
 ;;               ))
 ;;       )))
-#+end_src
 
-* Editor
-** tilt scroll
-#+begin_src emacs-lisp :tangle config.el
 (setq mouse-wheel-tilt-scroll t)
-#+end_src
-** n0s1-zen-mode
-#+begin_src emacs-lisp :tangle config.el
+
 (setq focus-mode nil)
 (setq focus-mode-to-thing '((prog-mode . paragraph) (text-mode . paragraph)))
 
@@ -571,29 +88,19 @@ Highlight trailing whitespace and lines greater than 80 chars
 
 (add-hook! 'writeroom-mode-hook
   (if writeroom-mode (n0s1-zen-hide) (n0s1-zen-show)))
-#+end_src
-** Disable snipe
-#+begin_src emacs-lisp :tangle config.el
+
 ; Remove s for snipe binding so it reverts to substitute
 (after! evil-snipe (evil-snipe-mode -1))
 (remove-hook 'doom-first-input-hook #'evil-snipe-mode)
-#+end_src
-** Restore vim substitute
-#+begin_src emacs-lisp :tangle config.el
+
 (map! :n "s" #'evil-substitute)
-#+end_src
-** Evil surround change
-#+begin_src emacs-lisp :tangle config.el
+
 (map! :n "gS" #'evil-surround-change)
-#+end_src
-** Avy Setup (Easymotion)
-#+begin_src emacs-lisp :tangle config.el
+
 (map! :n "S" #'evil-avy-goto-char)
 (setq avy-styles-alist '((avy-goto-char . at-full)))
 (setq avy-case-fold-search nil)
-#+end_src
-** Toggle window fullscreen
-#+begin_src emacs-lisp :tangle config.el
+
 (setq fullscreen-toggled nil)
 
 (defun my/toggle-fullscreen ()
@@ -604,9 +111,6 @@ Highlight trailing whitespace and lines greater than 80 chars
           (progn (delete-other-windows) t))))
 
   (map! :leader :desc "Toggle fullscreen" "w f" #'my/toggle-fullscreen)
-#+end_src
-** Newline then insert
-#+begin_src emacs-lisp config.el :tangle config.el
 
 (defun +evil/insert-newline-above-then-insert (count)
   "insert count blank line(s) above current line then change to insert mode."
@@ -626,9 +130,7 @@ Highlight trailing whitespace and lines greater than 80 chars
 
 (map! :desc "insert-newline-above-then-insert" :leader "OO" '+evil/insert-newline-above-then-insert)
 (map! :desc "insert-newline-below-then-insert" :leader "Oo" '+evil/insert-newline-below-then-insert)
-#+end_src
-** Message buffer
-#+begin_src emacs-lisp :tangle config.el
+
 (defvar my/buffer-before-messages (get-buffer "*Messages*"))
 
 (defun my/toggle-messages ()
@@ -640,36 +142,13 @@ Highlight trailing whitespace and lines greater than 80 chars
       (switch-to-buffer (get-buffer "*Messages*")))))
 
 (map! :leader :desc "Open Messages" "M" #'my/toggle-messages)
-#+end_src
-** Very large file mode
-#+begin_src emacs-lisp :tangle packages.el
-(package! vlf)
-;; (package! vlf :recipe (:host github :repo "m00natic/vlfi" :files ("*.el"))
-;;   :pin "cc02f2533782d6b9b628cec7e2dcf25b2d05a27c" :disable t)
-#+end_src
 
-To make VLF available without delaying startup, we'll just load it in quiet moments.
-#+begin_src emacs-lisp :tangle config.el
 (use-package! vlf-setup)
 ;; (use-package! vlf-setup
 ;;   :defer-incrementally vlf-tune vlf-base vlf-write vlf-search vlf-occur vlf-follow vlf-ediff vlf)
-#+end_src
 
-* Langs
-** UIUA
-#+begin_src emacs-lisp :tangle packages.el
-(package! uiua-mode)
-#+end_
-** General Code
-*** Box comments (rebox2)
-#+begin_src emacs-lisp :tangle packages.el
-(package! rebox2)
-#+end_src
-#+begin_src emacs-lisp :tangle config.el
 (use-package! rebox2)
-#+end_src
-*** Make executable
-#+begin_src emacs-lisp :tangle config.el
+
 (defun toggle-buffer-exec ()
 "Mark the file for the current buffer executable."
   (interactive)
@@ -684,20 +163,10 @@ To make VLF available without delaying startup, we'll just load it in quiet mome
                 (message "Set \"%s\" as executable (%s)" fname "#o755"))))))
 
 (map! :leader :desc "Toggle file as executable" :g "fx" #'toggle-buffer-exec)
-#+end_src
-*** Enable tree-sitter globally
-#+begin_src emacs-lisp :tangle config.el
+
 (after! tree-sitter
   (setq global-tree-sitter-mode 1))
-#+end_src
-*** Snippets
-**** yasnippet default snippets
-#+begin_src emacs-lisp :tangle packages.el
-(package! yasnippet-snippets)
-#+end_src
-** Org
-*** Find-org-files-in-dirs
-#+begin_src emacs-lisp :tangle config.el
+
 (defun find-org-files-in-dir (dir &optional base-dir)
   "Find all org files in each of the child dirs in BASE-DIR."
     (directory-files-recursively (expand-file-name dir base-dir) "\.org$"))
@@ -705,10 +174,7 @@ To make VLF available without delaying startup, we'll just load it in quiet mome
 (defun find-org-files-in-dirs (base-dir children)
   "Find all org files in each of the child dirs in BASE-DIR."
   (mapcan (lambda (x) (find-org-files-in-dir x base-dir)) children))
-#+end_src
-*** Base Org
-**** Home
-#+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
+
 (after! org
   (setq org-directory pii/org-directory
         +org-capture-todo-file "todos/todo.org"
@@ -717,15 +183,7 @@ To make VLF available without delaying startup, we'll just load it in quiet mome
         +org-capture-changelog-file "changelog.org"
         n0s1-agenda-dirs '("personal" "projects" "todos" "work")
         org-agenda-files (find-org-files-in-dirs org-directory n0s1-agenda-dirs)))
-#+end_src
-**** Work
-#+begin_src emacs-lisp :tangle (if work-config "config.el" "no")
-(after! org
-  (setq org-directory pii/org-directory
-        org-agenda-files (find-org-files-in-dir org-directory)))
-#+end_src
-**** Both
-#+begin_src emacs-lisp :tangle config.el
+
 (after! org
   (setq org-default-notes-file +org-capture-notes-file
         org-capture-journal-file +org-capture-journal-file
@@ -767,25 +225,17 @@ To make VLF available without delaying startup, we'll just load it in quiet mome
  '(org-level-5 ((t (:inherit outline-5 :height 1.1)))))
 
   ;;(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-#+end_src
-*** Library of babel
-**** SQL Library of babel helpers
-#+begin_src emacs-lisp :tangle "config.el"
+
 (after! org
     (org-babel-lob-ingest pii/org-babel-lob-ingest))
-#+end_src
-*** Org tempo
-#+begin_src emacs-lisp :tangle config.el
+
 (use-package! org-tempo
   :after org
   :init
   (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
   (add-to-list 'org-structure-template-alist '("sql" . "src SQL"))
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp")))
-#+end_src
-*** Org capture templates
-**** Template builder functions
-#+begin_src emacs-lisp :tangle config.el
+
 (defun build-org-capture-template-headline (state tags scheduled)
   (let ((ts "\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t) nil nil nil nil)"))
     (concat "\n** " state " %? " tags (when scheduled ts) "\n\n%a\n")))
@@ -813,9 +263,6 @@ To make VLF available without delaying startup, we'll just load it in quiet mome
 (defun build-org-todo-capture-templates (pairs)
   (mapcan (lambda (y) (build-org-todo-capture-template (car y) (cadr y))) pairs))
 
-#+end_src
-**** Both
-#+begin_src emacs-lisp :tangle config.el
 (setq org-project-capture-templates
       ;; Will use {project-root}/{todo,notes,changelog}.org, unless a
       ;; {todo,notes,changelog}.org file is found in a parent directory.
@@ -857,9 +304,6 @@ To make VLF available without delaying startup, we'll just load it in quiet mome
        '(("s" "SOMEDAY LIFE"     "Eventually" "SOMEDAY" ":LIFE:" nil)
          ("S" "SOMEDAY Untagged" "Eventually" "SOMEDAY" ""       nil))))
 
-#+end_src
-**** Home
-#+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
 (setq org-personal-capture-templates
       '(("n" "Personal notes" entry
          (file+headline +org-capture-notes-file "Notes")
@@ -882,41 +326,14 @@ To make VLF available without delaying startup, we'll just load it in quiet mome
                 org-someday-capture-templates
                 org-personal-capture-templates
                 org-project-capture-templates)))
-#+end_src
-**** Work
-#+begin_src emacs-lisp :tangle (if work-config "config.el" "no")
-(after! org
-  (setq org-capture-templates
-        (append (build-org-todo-capture-templates '(("t" nil)))
-                org-someday-capture-templates
-                org-project-capture-templates)))
-#+end_src
 
-*** Org tangle binding
-#+begin_src emacs-lisp :tangle config.el
 (map! :leader :desc "Org babel tangle" "m B" #'org-babel-tangle)
-#+end_src
-*** Org-Alert
-#+begin_src emacs-lisp :tangle packages.el
-(package! org-alert)
-#+end_src
-#+begin_src emacs-lisp :tangle config.el
+
 (use-package! org-alert :config
     (setq alert-default-style 'libnotify))
-#+end_src
-*** Org super agenda
-#+begin_src emacs-lisp :tangle packages.el
-(package! org-super-agenda)
-#+end_src
-**** Super Agenda Layouts
-Regular agenda does not include habits
-Day agenda does include habits
-***** Both
-#+begin_src emacs-lisp :tangle config.el
+
 (use-package! org-super-agenda)
-#+end_src
-***** Home
-#+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
+
 (setq n0s1-org-super-agenda-week-config
        '((:log t)  ; Automatically named "Log"
          (:discard (:tag ("habit" "optional" "self_care")))
@@ -945,40 +362,7 @@ Day agenda does include habits
         (:name "Unimportant" :auto-tags
          (:todo ("SOMEDAY" "MAYBE" "TO-READ")) :order 100)
         (:name "Waiting..." :todo "WAITING" :order 98)))
-#+end_src
-***** Work
-#+begin_src emacs-lisp :tangle (if work-config "config.el" "no")
-(setq n0s1-org-super-agenda-week-config
-       '((:log t)  ; Automatically named "Log"
-         (:discard (:tag ("habit" "optional")))
-         (:name "Schedule" :time-grid t :order 0)
-         (:name "Today" :scheduled today :order 1)
-         (:name "Due today" :deadline today :order 2)
-         (:name "Overdue" :deadline past :order 3)
-         (:name "Due soon" :deadline future :order 5)
-         (:name "Scheduled earlier" :scheduled past :order 4)
-         (:name "Unimportant" :auto-tags
-          (:todo ("SOMEDAY" "MAYBE" "TO-READ")) :order 100)
-         (:name "Waiting..." :todo "WAITING" :order 98)))
 
-(setq n0s1-org-super-agenda-day-config
-      '((:log t)  ; Automatically named "Log"
-        (:name "Due soon" :deadline future :order 7)
-        (:name "Habits" :tag "habit" :order 5)
-        (:name "Optional" :tag "optional" :order 8)
-        (:name "Schedule" :time-grid t :order 0)
-        (:name "Today" :scheduled today :order 3)
-        (:name "Due today" :deadline today :order 4)
-        (:name "Overdue" :deadline past :order 2)
-        (:name "Scheduled earlier" :scheduled past :order 1)
-        (:name "Remember" :todo "REMEMBER" :order 90)
-        (:name "Unimportant" :auto-tags
-         (:todo ("SOMEDAY" "MAYBE" "TO-READ")) :order 100)
-        (:name "Waiting..." :todo "WAITING" :order 98)))
-#+end_src
-**** Super Agenda Views
-***** Home
-#+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
 (setq org-super-agenda-groups n0s1-org-super-agenda-week-config)
 
 (setq org-agenda-custom-commands
@@ -993,27 +377,7 @@ Day agenda does include habits
         ("tn" "todo n0s1 view"       ((tags-todo "n0s1")))
         ("tc" "todo n0s1.core view"  ((tags-todo "n0s1_core")))
         ("tb" "todo ByteSource view" ((tags-todo "BYTESOURCE")))))
-#+end_src
-***** Work
-#+begin_src emacs-lisp :tangle (if work-config "config.el" "no")
-(setq org-super-agenda-groups n0s1-org-super-agenda-week-config)
 
-(setq org-agenda-custom-commands
-      '(("n" "n0s1 day view"
-         ((agenda "" ((org-agenda-span 'day)
-                      (org-agenda-start-day nil)
-                      (org-super-agenda-groups
-                       n0s1-org-super-agenda-day-config)))))
-        ("T"  "all todos view"
-         ((alltodo "" ((org-super-agenda-groups '((:auto-category t)))))))
-        ("tD" "todo DB view"  ((tags-todo "DB")))
-        ("tM" "todo MW view"  ((tags-todo "MW")))
-        ("tR" "todo RMS view" ((tags-todo "RMS")))
-        ("tS" "todo SAM view" ((tags-todo "SAM")))))
-#+end_src
-**** Bindings
-***** Both
-#+begin_src emacs-lisp :tangle config.el
 (defun n0s1-agenda-day-view (&optional arg)
   (interactive "P")
   (org-agenda arg "n"))
@@ -1024,14 +388,9 @@ Day agenda does include habits
 
 (map! :desc "Org Agenda Day View" :leader "A" 'n0s1-agenda-day-view)
 (map! :desc "Org Agenda Day View" :leader "T" 'n0s1-agenda-all-todos-view)
-#+end_src
-**** Hook
-***** Both
-#+begin_src emacs-lisp :tangle config.el
+
 (add-hook 'after-init-hook 'org-super-agenda-mode)
-#+end_src
-*** Org Roam
-#+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
+
 (use-package! org-roam
   :custom
   (org-roam-v2-ack t)
@@ -1103,50 +462,6 @@ Day agenda does include habits
       :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n[[id:71cca294-dc20-4648-a5d2-bcfde321ff19][Day]]"))))
   :config (org-roam-setup))
 
-#+end_src
-
-**** Work
-#+begin_src emacs-lisp :tangle (if work-config "config.el" "no")
-(use-package! org-roam
-  :custom
-  (org-roam-v2-ack t)
-  (org-roam-directory pii/org-roam-directory)
-  (personal-org-roam-directory pii/personal-org-roam-directory)
-  (org-roam-capture-templates
-   '(("d" "default        (general:public)" plain (file (file-truename (concat personal-org-roam-directory "/templates/default.org")))
-      :if-new (file+head  "public/general/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
-      :unnarrowed t)
-     ("L" "Language       (technology:public)" plain (file (file-truename (concat personal-org-roam-directory "/templates/language.org")))
-      :if-new (file+head  "public/technology/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Language:")
-      :unnarrowed t)
-     ("l" "language note  (technology:public)" plain (file (file-truename (concat personal-org-roam-directory "/templates/language_note.org")))
-      :if-new (file+head  "public/technology/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :LanguageNote:")
-      :unnarrowed t)
-     ("S" "Software       (technology:public)" plain (file (file-truename (concat personal-org-roam-directory "/templates/software.org")))
-      :if-new (file+head  "public/technology/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Software:")
-      :unnarrowed t)
-     ("s" "software note  (technology:public)" plain (file (file-truename (concat personal-org-roam-directory "/templates/software_note.org")))
-      :if-new (file+head  "public/technology/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :SoftwareNote:")
-      :unnarrowed t)
-     ;; Private
-     ;; TODO Fix these templates
-     ("W" "Work [general] (work/general:private)" plain (file (file-truename (concat org-roam-directory "/templates/software.org")))
-      :if-new (file+head  "private/work/general/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Work:")
-      :unnarrowed t)
-     ("w" (concat "Work [" pii/employer "]  (work/" pii/employer ":private)") plain (file (file-truename (concat org-roam-directory "/templates/software_note.org")))
-      :if-new (file+head  (concat "private/work/" pii/employer "/<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :Work:" pii/employer ":"))
-      :unnarrowed t)
-     ))
-  (org-roam-dailies-directory "daily/")
-  (org-roam-dailies-capture-templates
-   '(("d" "default" entry (file (file-truename (concat personal-org-roam-directory "/templates/default_daily.org")))
-      :if-new (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>\n[[id:71cca294-dc20-4648-a5d2-bcfde321ff19][Day]]"))))
-  :config (org-roam-setup))
-
-#+end_src
-
-**** Both
-#+begin_src emacs-lisp :tangle config.el
 (after! org-roam
   (map! (:prefix ("C-c n" . "roam")
          :desc "org-roam-node-random"              "a" #'org-roam-node-random
@@ -1184,26 +499,11 @@ Day agenda does include habits
          :desc "org-roam-ref-remove"           "R" #'org-roam-ref-remove
          :desc "org-roam-tag-add"              "t" #'org-roam-tag-add
          :desc "org-roam-tag-remove"           "T" #'org-roam-tag-remove)))
-#+end_src
-***** Websocket
-#+begin_src emacs-lisp :tangle config.el
-(use-package! websocket :after org-roam)
-#+end_src
-*** Org Roam UI
-#+begin_src emacs-lisp :tangle packages.el
-(package! org-roam-ui)
-#+end_src
 
-#+begin_src emacs-lisp :tangle config.el
+(use-package! websocket :after org-roam)
+
 (use-package! org-roam-ui :after org-roam :hook (org-roam . org-roam-ui-mode) :config)
-#+end_src
-*** Org-modern
-**** Package
-#+begin_src emacs-lisp :tangle packages.el
-(package! org-modern)
-#+end_src
-**** Config
-#+begin_src emacs-lisp :tangle config.el
+
 (use-package! org-modern)
 (after! org-modern
   (menu-bar-mode -1)
@@ -1232,9 +532,7 @@ Day agenda does include habits
    "⭠ now ─────────────────────────────────────────────────")
 
   (global-org-modern-mode))
-#+end_src
-*** Org Babel SQL
-#+begin_src emacs-lisp :tangle config.el
+
 (defun string-to-tablified-buffer (str buffer-name sep)
   (with-current-buffer (get-buffer-create buffer-name)
     (org-mode)
@@ -1260,42 +558,20 @@ Day agenda does include habits
   (interactive)
   (+popup-buffer (get-buffer-create "*SQL Results*")))
 
-#+end_src
-*** Org heading IDs
-#+begin_src emacs-lisp :tangle config.el
 (defun my/org-add-ids-to-headlines-in-file ()
   "Add ID properties to all headlines in the current file which
 do not already have one."
   (interactive)
   (org-map-entries 'org-id-get-create))
-#+end_src
-*** Org jira
-#+begin_src emacs-lisp :tangle packages.el
-(package! org-jira)
-#+end_src
-#+begin_src emacs-lisp :tangle config.el
+
 (use-package! org-jira
   :custom
   (org-jira-working-dir pii/org-jira-working-dir)
   (jiralib-url pii/jiralib-url)
   (jiralib-update-issue-fields-exclude-list '(components)))
-#+end_src
-*** Org auto tangle
-Auto tangle org files
-#+begin_src emacs-lisp :tangle packages.el
-(package! org-auto-tangle :recipe (:host github :repo "yilkalargaw/org-auto-tangle" :files ("*.el")))
-#+end_src
 
-#+begin_src emacs-lisp :tangle config.el
 (use-package org-auto-tangle :defer t :hook (org-mode . org-auto-tangle-mode))
-#+end_src
-*** El-Secretario
-#+begin_src emacs-lisp :tangle (if home-config "packages.el" "no")
-(package! el-secretario)
-(package! el-secretario-org)
-(package! el-secretario-mu4e)
-#+end_src
-#+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
+
 (defun el-secretario-daily-review ()
   (interactive)
   (el-secretario-start-session
@@ -1310,24 +586,10 @@ Auto tangle org files
       (el-secretario-org-make-source '(todo "TODO") (list (file-truename (concat org-directory "bytesource.org"))))
       (el-secretario-org-make-source '(todo "TODO") (list (file-truename (concat org-directory "n0s1.core.org"))))
       (el-secretario-org-make-source '(todo "TODO") (list (file-truename (concat org-directory "strifebot.org"))))))))
-#+end_src
-*** Org Exporting
-**** Ox-man
-Part of vanilla emacs (no package to install)
-#+begin_src emacs-lisp :tangle config.el
-(use-package ox-man)
-    #+end_src
-**** Ox-confluence
-#+begin_src emacs-lisp :tangle packages.el
-(package! ox-confluence :recipe (:host github :repo "nan0scho1ar/ox-confluence-modern" :files ("*.el")))
-#+end_src
 
-#+begin_src emacs-lisp :tangle config.el
+(use-package ox-man)
+
 (use-package ox-confluence)
-#+end_src
-**** Tecosaur export
-Pinched from teco's config
-#+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
 
 (define-minor-mode org-fancy-html-export-mode
   "Toggle my fabulous org export tweaks. While this mode itself does a little bit,
@@ -1852,13 +1114,6 @@ to allow the TOC to be a collapseable tree."
 ;;(provide 'config)
 ;;; config.el ends here
 
-#+end_src
-*** Org Transclusion
-**** Both
-#+begin_src emacs-lisp :tangle packages.el
-(package! org-transclusion)
-#+end_src
-#+begin_src emacs-lisp :tangle config.el
 (use-package! org-transclusion
   :after org
   :init
@@ -1867,22 +1122,7 @@ to allow the TOC to be a collapseable tree."
    :leader
    :prefix "n"
    :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
-#+end_src
-** Python
-*** LSP (using doom flag)
-#+begin_src emacs-lisp :tangle no
-(package! lsp-pyright)
-#+end_src
 
-#+begin_src emacs-lisp :tangle no
-(use-package lsp-pyright
-  :ensure t
-  :hook (python-mode . (lambda ()
-                          (require 'lsp-pyright)
-                          (lsp))))  ; or lsp-deferred
-#+end_src
-*** Python Formatting
-#+begin_src emacs-lisp :tangle config.el
 ;; This hook is now incomplete for some reason
 (add-hook! 'editorconfig-after-apply-functions
   (defun +editorconfig-disable-formatter-maybe-h (props)
@@ -1897,9 +1137,7 @@ to allow the TOC to be a collapseable tree."
             sql-mode         ; sqlformat is currently broken
             tex-mode         ; latexindent is broken
             latex-mode))
-#+end_src
-*** Pytest
-#+begin_src emacs-lisp :tangle config.el
+
 (map! :map python-pytest-mode-map
       :n "q" #'delete-window
       :n "r" #'my/pytest
@@ -1930,39 +1168,24 @@ to allow the TOC to be a collapseable tree."
 (map! :mode inferior-python-mode :desc "Run pytests"
       :n "SPC T" #'my/pytest-from-repl)
 
-#+end_src
-*** Treesitter hook
-#+begin_src emacs-lisp :tangle config.el
 (add-hook 'python-mode 'tree-sitter-mode)
-#+end_src
-*** Prettify symbols
-#+begin_src emacs-lisp :tangle config.el
+
 (setq python-prettify-symbols-alist
       '(("lambda"  . ?λ)))
-#+end_src
-*** YAML
-#+begin_src emacs-lisp :tangle config.el
+
 (setq hs-hide-all-non-comment-function #'ignore)
 (setq-hook! 'yaml-mode-hook hs-hide-comments-when-hiding-all t)
-#+end_src
-** Elixir
-*** Elixir compile buffer
-#+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
+
 (map! :after elixir-mode
       :map elixir-mode-map
       :n "C-c C-c" #'alchemist-iex-compile-this-buffer-and-go)
-#+end_src
-*** Alchemist
-#+begin_src emacs-lisp :tangle (if home-config "config.el" "no")
+
 (after! alchemist
   (set-repl-handler! 'elixir-mode #'alchemist-iex-run)
   (add-hook 'elixir-mode-hook
             (lambda ()
               (add-hook 'after-save-hook 'alchemist-iex-reload-module))))
-#+end_src
-** Lisp
-*** Elisp Help back
-#+begin_src emacs-lisp :tangle config.el
+
 ;; Helpful history
 (defvar lookup-documentation-history '())
 
@@ -1982,51 +1205,18 @@ to allow the TOC to be a collapseable tree."
 
 (map! :map helpful-mode-map :n "p" #'+lookup/documentation-back)
 
-#+end_src
-*** Geiser
-#+begin_src emacs-lisp :tangle config.el
 (setq geiser-debug-jump-to-debug-p nil)
 (setq geiser-debug-show-debug-p nil)
-#+end_src
-** SQL
-*** SQLeye
-**** Install package
-#+begin_src emacs-lisp :tangle packages.el
-(package! sqleye :recipe (:host github :repo "nan0scho1ar/sqleye" :files ("*.el")))
-#+end_src
-**** Set SQLeye as SQL Mode eval handler
-#+begin_src emacs-lisp :tangle config.el
+
 (use-package! sqleye)
 (set-eval-handler! 'sql-mode #'sqleye-send-region)
-#+end_src
-**** Add binding to toggle SQLeye buffer
-#+begin_src emacs-lisp :tangle config.el
-(map! :leader :desc "Open SQLeye Buffer" "o s" #'sqleye-toggle-buffer)
-#+end_src
-**** Add quickrun bindings inside the SQL interactive buffer
-#+begin_src emacs-lisp :tangle config.el
-(map! :map sql-interactive-mode-map :v "gr" #'sqleye-send-region-and-deselect)
-#+end_src
-** Racket
-*** CFtool
-#+begin_src emacs-lisp :tangle config.el
-(add-to-list 'auto-mode-alist '("\\.cft\\'" . racket-mode))
-#+end_src
 
-* Project
-** Gitmanager
-*** Install Package
-**** Home
-#+begin_src emacs-lisp :tangle (if home-config "packages.el" "no")
-(package! gitmanager :recipe (:local-repo "~/repos/me/gitmanager" :build (:not compile)))
-#+end_src
-**** Work
-#+begin_src emacs-lisp :tangle (if work-config "packages.el" "no")
-(package! gitmanager :recipe (:host github :repo "nan0scho1ar/gitmanager" :files ("*.el")))
-#+end_src
-*** Config
-**** Both
-#+begin_src emacs-lisp :tangle config.el
+(map! :leader :desc "Open SQLeye Buffer" "o s" #'sqleye-toggle-buffer)
+
+(map! :map sql-interactive-mode-map :v "gr" #'sqleye-send-region-and-deselect)
+
+(add-to-list 'auto-mode-alist '("\\.cft\\'" . racket-mode))
+
 (use-package! gitmanager)
 (after! gitmanager
   (setq gitmanager-repo-source 'gitmanager-cache-file)
@@ -2035,21 +1225,7 @@ to allow the TOC to be a collapseable tree."
   (map! :mode gitmanager-mode :n "q" #'gitmanager-hide)
   (map! :mode gitmanager-mode :n "r" #'gitmanager-fetch-and-state)
   (map! :leader :desc "Open Gitmanager" "g m" #'gitmanager))
-#+end_src
-**** Work
-#+begin_src emacs-lisp :tangle (if work-config "config.el" "no")
-(after! gitmanager
-  (setq gitmanager-cache-dir "~/.config/gitmanager/"))
-#+end_src
-** Ahoy
-Depends on ansi-exec
-*** Package
-#+begin_src emacs-lisp :tangle packages.el
-(package! ansi-exec :recipe (:host github :repo "nan0scho1ar/emacs-ansi-exec" :files ("*.el")))
-(package! ahoy :recipe (:host github :repo "nan0scho1ar/emacs-ahoy" :files ("*.el")))
-#+end_src
-*** Config
-#+begin_src emacs-lisp :tangle config.el
+
 (use-package! ansi-exec)
 (after! ansi-exec
   (use-package! ahoy
@@ -2059,30 +1235,11 @@ Depends on ansi-exec
                    :desc "Ahoy run cmd"       "A" #'ahoy
                    :desc "Ahoy run with args" "a" #'ahoy-run-with-args
                    :desc "Ahoy help"          "h" #'ahoy-help))))
-#+end_src
-* Misc
-** Packages
-*** Websocket
-#+begin_src emacs-lisp :tangle packages.el
-(package! websocket)
-#+end_src
-*** Simple-httpd
-#+begin_src emacs-lisp :tangle packages.el
-(package! simple-httpd)
-#+end_src
-*** F (file functions)
-#+begin_src emacs-lisp :tangle packages.el
-(package! f)
-#+end_src
-** Fix emacs everywhere hooks (kinda)
-#+begin_src emacs-lisp :tangle config.el
+
 (setq-hook! 'emacs-everywhere-init-hooks doom-inhibit-local-var-hooks t)
-#+end_src
-** Get string from file
-#+begin_src emacs-lisp :tangle config.el
+
 (defun get-string-from-file (filePath)
   "Return filePath's file content."
   (with-temp-buffer
     (insert-file-contents filePath)
     (buffer-string)))
-#+end_src
