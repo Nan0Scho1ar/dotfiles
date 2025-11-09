@@ -1,4 +1,5 @@
 module ldev {
+
     def containers [] {
         open ($env.LOCALDEV_DIR)/compose.yaml | get services | columns
     }
@@ -13,21 +14,19 @@ module ldev {
         $"/usr/bin/env nu -c \"source ~/.config/nushell/autoload/ldev.nu; ($cmd)\""
     }
 
-    export def seed [] { 
-        cd $env.LOCALDEV_DIR; ahoy reseed-most 
-    }
-
-    export def up [] {
+    export def up [...names: string@containers] {
         cd $env.LOCALDEV_DIR
-        docker compose up -d ...(containers)
-        status
+        docker compose up --wait ...$names
     }
 
-    export def down [] {
-        if (running | length) > 0 {
-            docker stop ...(running)
-        }
-        status
+    export def down [...names: string@containers] {
+        cd $env.LOCALDEV_DIR
+        docker compose stop ...$names
+    }
+
+    export def destroy [...names: string@containers] {
+        cd $env.LOCALDEV_DIR
+        docker compose down ...$names
     }
 
     export def status [] {
@@ -57,16 +56,20 @@ module ldev {
     }
 
     export def --env main [] {
-        let prev_cmd = 'docker logs -f {}'
+        let prev_cmd = 'docker logs -f {} | tspin'
         let prev_win = 'follow,80%'
 
         let header = 'Ctrl-Space to toggle'
-        let bind1 = $"start:reload\((fzf-run 'ldev status')\)"
-        let bind2 = $"ctrl-space:execute-silent\((fzf-run 'ldev toggle {}')\)+reload\((fzf-run 'ldev status')\)"
-    
+        let status_cmd = fzf-run 'ldev status'
+        let toggle_cmd = fzf-run 'ldev toggle {}'
+        let bind1 = $"start:reload\(($status_cmd)\)"
+        let bind2 = $"ctrl-space:execute-silent\(($toggle_cmd)\)+reload\(($status_cmd)\)"
+
         fzf --ansi --preview-window $prev_win --preview $prev_cmd --bind $bind1 --bind $bind2 --header $header
-        | if $in != '' {docker logs -f $in} 
+        | if $in != '' { docker logs -f $in | tspin } 
     }
 }
+
+$env.LOCALDEV_DIR = ($env.HOME | path join 'repos' 'orygen' 'localdev')
 
 use ldev

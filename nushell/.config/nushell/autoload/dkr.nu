@@ -38,16 +38,28 @@ module dkr {
         docker image ls -a --format '{{json .}}' | from-docker | to-images
     }
 
-    export def stop [name: string@running] {
-        docker stop (get-id $name)
+    export def stop [--all, name: string@running] {
+        if $all {
+            docker stop ...(main | get ID)
+        } else if $name {
+            docker stop $name
+        } else {
+            print "Please provide a container name or use --all to stop all containers."
+        }
     }
 
-    export def stop-all [] {
-        docker stop ...(main | get ID)
-    }
-
-    export def logs [name: string@running] {
+    export def logs [name: string@c] {
         docker logs $name -f
+    }
+
+    export def aws-login [] {
+        aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin $"((aws sts get-caller-identity | from json).Account).dkr.ecr.ap-southeast-2.amazonaws.com"
+    }
+
+    export def pull-push [source: string, target: string] {
+        docker pull $source
+        docker tag $source $target
+        docker push $target
     }
 
 }

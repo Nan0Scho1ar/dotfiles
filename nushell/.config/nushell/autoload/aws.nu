@@ -1,10 +1,13 @@
 module awsp {
     def aws_options [] {
-        open ~/.aws/config 
-        | from ini 
-        | columns 
-        | find -n profile 
-        | str replace "profile " "" 
+        {
+            options: {
+                case_sensitive: false,
+                completion_algorithm: substring,
+                sort: false,
+            },
+            completions: (open ~/.aws/config | parse '[profile {name}]' | get name)
+        }
     }
 
     export def --env main [profile?: string@aws_options] {
